@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import type { Metadata } from "next";
 import fs from "fs";
 import path from "path";
@@ -110,9 +111,9 @@ export default async function PostPage({ params }: PageProps) {
           <AuthorCard />
 
           <div className={styles.backWrapper}>
-            <a href="/" className={styles.backLink}>
+            <Link href="/" className={styles.backLink}>
               &larr; Voltar para o blog
-            </a>
+            </Link>
           </div>
         </div>
       </main>
