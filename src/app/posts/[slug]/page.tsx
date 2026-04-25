@@ -50,10 +50,12 @@ export default async function PostPage({ params }: PageProps) {
 
   if (!post) notFound();
 
-  const formattedDate = new Date(post.date).toLocaleDateString("pt-BR", {
+  const formattedDate = new Date(post.date).toLocaleString("pt-BR", {
     year: "numeric",
     month: "long",
     day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 
   const contentPath = path.join(
