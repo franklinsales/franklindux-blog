@@ -1,124 +1,15 @@
-## O que é Clean Architecture?
+## <<< Hello World
 
-A **Clean Architecture**, popularizada por Robert C. Martin (Uncle Bob), organiza o código em camadas concêntricas onde as dependências sempre apontam para dentro — em direção ao domínio. Em TypeScript, essa separação fica ainda mais natural com interfaces e tipos.
+Olá, tudo bem?
 
-## As Camadas
+Meu nome é Franklin Sales, mas atualmente prefiro utilizar Franklin Dux. Por que Dux? Porque sim.
 
-A estrutura de pastas reflete as camadas:
+Hoje é 25 de abril de 2026. Está fazendo 27 °C lá fora, o que é estranho para esta época do ano, já que estamos no outono. Mas o objetivo deste post não é falar do clima, e sim marcar o início da minha jornada de documentar minhas experiências e aprendizados no desenvolvimento de software.
 
-```bash
-src/
-  domain/          # Entidades + interfaces de repositório
-  application/     # Casos de uso
-  infrastructure/  # Implementações concretas (DB, APIs)
-  presentation/    # Controllers, componentes React
-```
+Neste momento, tenho 34 anos e mais de 10 anos de experiência formal em desenvolvimento de software. Já trabalhei em projetos de diversos setores, como e-commerce, fintech, saúde e educação. Atuei em startups, agências digitais e multinacionais e, ao longo desse tempo, desempenhei diferentes papéis, como desenvolvedor front-end, back-end, full-stack, líder técnico e arquiteto de software. Inclusive, já tentei fundar minha própria startup, o que não deu certo, na verdade deu muito errado rsrs, mas me proporcionou aprendizados valiosos sobre o lado business e seu relacionamento com a tecnologia.
 
-## Definindo o Domínio
+Depois de toda essa trajetória, decidi criar este blog para compartilhar o que aprendi ao longo dos anos. Esse, no entanto, não é o único motivo. Também quero usar este espaço para registrar o que venho estudando ou revisando recentemente, ou seja, poder ter um lugar para organizar e documentar a minha evolução como profissional. Afinal, no desenvolvimento de software, somos eternos aprendizes.
 
-A camada de domínio não conhece nada externo. Apenas entidades e contratos:
+Assim, este blog será uma mistura de passado e presente. E, como o espaço é meu, reservo-me o direito de abordar ocasionalmente outros temas que eu considere interessantes, mas conteúdos `off-topic` serão raros.
 
-```typescript
-// domain/entities/Post.ts
-export interface Post {
-  id: string
-  title: string
-  slug: string
-  content: string
-  publishedAt: Date
-}
-
-// domain/repositories/PostRepository.ts
-export interface PostRepository {
-  findBySlug(slug: string): Promise<Post | null>
-  findAll(options?: { page: number; limit: number }): Promise<Post[]>
-  save(post: Post): Promise<Post>
-}
-```
-
-## Casos de Uso
-
-A camada de aplicação orquestra o domínio sem saber como os dados são armazenados:
-
-```typescript
-// application/use-cases/GetPostBySlug.ts
-import type { PostRepository } from '@/domain/repositories/PostRepository'
-
-export class GetPostBySlug {
-  constructor(private readonly repository: PostRepository) {}
-
-  async execute(slug: string) {
-    const post = await this.repository.findBySlug(slug)
-
-    if (!post) {
-      throw new Error(`Post não encontrado: ${slug}`)
-    }
-
-    return post
-  }
-}
-```
-
-## Infraestrutura
-
-A implementação concreta do repositório fica na camada de infraestrutura:
-
-```typescript
-// infrastructure/repositories/PrismaPostRepository.ts
-import type { PrismaClient } from '@prisma/client'
-import type { PostRepository } from '@/domain/repositories/PostRepository'
-import type { Post } from '@/domain/entities/Post'
-
-export class PrismaPostRepository implements PostRepository {
-  constructor(private readonly prisma: PrismaClient) {}
-
-  async findBySlug(slug: string): Promise<Post | null> {
-    return this.prisma.post.findUnique({ where: { slug } })
-  }
-
-  async findAll({ page = 1, limit = 10 } = {}) {
-    return this.prisma.post.findMany({
-      skip: (page - 1) * limit,
-      take: limit,
-      orderBy: { publishedAt: 'desc' },
-    })
-  }
-
-  async save(post: Post): Promise<Post> {
-    return this.prisma.post.upsert({
-      where: { id: post.id },
-      create: post,
-      update: post,
-    })
-  }
-}
-```
-
-## Testabilidade
-
-O maior benefício é a testabilidade. O caso de uso pode ser testado com um repositório mock sem nenhuma dependência de banco:
-
-```typescript
-// application/use-cases/GetPostBySlug.test.ts
-import { GetPostBySlug } from './GetPostBySlug'
-import type { PostRepository } from '@/domain/repositories/PostRepository'
-
-const mockRepository: PostRepository = {
-  findBySlug: vi.fn(),
-  findAll: vi.fn(),
-  save: vi.fn(),
-}
-
-test('lança erro se o post não existir', async () => {
-  vi.mocked(mockRepository.findBySlug).mockResolvedValue(null)
-  const useCase = new GetPostBySlug(mockRepository)
-
-  await expect(useCase.execute('slug-inexistente')).rejects.toThrow(
-    'Post não encontrado'
-  )
-})
-```
-
-## Conclusão
-
-Clean Architecture em TypeScript não precisa ser burocrática. Com interfaces bem definidas e injeção de dependência simples, você ganha testabilidade, flexibilidade para trocar implementações e um código que comunica a intenção do negócio com clareza.
+Por fim, espero que este blog seja útil para outros desenvolvedores, tanto para quem está começando quanto para quem já tem experiência. Também espero que ele me ajude a organizar meus pensamentos e a refletir sobre o que aprendi e continuo aprendendo. E, claro, que sirva como um meio de me conectar com outros profissionais da área, trocar ideias e evoluir em conjunto.
