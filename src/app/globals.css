@@ -20,7 +20,7 @@
 
 /* ─── Light theme ───────────────────────────────────────────────── */
 [data-theme="light"] {
-  --color-bg: #f8fafc;
+  --color-bg: #f0f2f3;
   --color-bg-elevated: #ffffff;
   --color-text: #0f172a;
   --color-text-muted: #475569;
@@ -85,4 +85,16 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+}
+
+/* ─── Shiki dual-theme (dark default, light override) ───────────── */
+/* Dark theme: shiki inline styles already handle it (defaultColor: 'dark') */
+/* Light theme: override with --shiki-light CSS variables */
+[data-theme="light"] .shiki,
+[data-theme="light"] .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+  font-style: var(--shiki-light-font-style) !important;
+  font-weight: var(--shiki-light-font-weight) !important;
+  text-decoration: var(--shiki-light-text-decoration) !important;
 }
