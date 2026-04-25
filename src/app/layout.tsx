@@ -15,36 +15,36 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://franklindux.dev"),
   title: {
-    default: "FranklinDux | Blog de Desenvolvimento de Software",
+    default: "FranklinDux | Desenvolvimento de Software, Inteligência Artificial, Tecnologia e Negócios",
     template: "%s | FranklinDux",
   },
   description:
-    "Blog pessoal de Franklin Dux sobre desenvolvimento de software, arquitetura, boas práticas e tecnologia.",
+    "Blog do Franklin Dux sobre desenvolvimento de software, inteligência artificial, tecnologia e negócios. Compartilhando experiências, aprendizados e insights enquanto evoluo como profissional e pessoa.",
   keywords: [
-    "desenvolvimento de software",
-    "programação",
-    "tecnologia",
-    "blog",
-    "Next.js",
-    "TypeScript",
-    "React",
+    "Franklin Dux",
+    "Desenvolvimento de Software",
+    "Inteligência Artificial",
+    "Tecnologia",
+    "Negócios",
+    "Arquitetura de Software",
+    "Boas Práticas",
   ],
   authors: [{ name: "FranklinDux" }],
   creator: "FranklinDux",
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    siteName: "FranklinDux Blog",
-    title: "FranklinDux | Blog de Desenvolvimento de Software",
+    siteName: "FranklinDux",
+    title: "FranklinDux | Desenvolvimento de Software, Tecnologia e Negócios",
     description:
-      "Blog pessoal de Franklin Dux sobre desenvolvimento de software, arquitetura, boas práticas e tecnologia.",
+      "Blog do Franklin Dux sobre desenvolvimento de software, inteligência artificial, tecnologia e negócios. Compartilhando experiências, aprendizados e insights enquanto evoluo como profissional e pessoa.",
     images: [{ url: "/me.jpeg", width: 800, height: 800, alt: "FranklinDux" }],
   },
   twitter: {
     card: "summary",
-    title: "FranklinDux | Blog de Desenvolvimento de Software",
+    title: "FranklinDux | Desenvolvimento de Software, Tecnologia e Negócios",
     description:
-      "Blog pessoal de Franklin Dux sobre desenvolvimento de software, arquitetura, boas práticas e tecnologia.",
+      "Blog do Franklin Dux sobre desenvolvimento de software, inteligência artificial, tecnologia e negócios. Compartilhando experiências, aprendizados e insights enquanto evoluo como profissional e pessoa.",
   },
   robots: {
     index: true,
