@@ -13,7 +13,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://franklindux.dev"),
+  metadataBase: new URL("https://franklindux.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", rel: "shortcut icon" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  appleWebApp: {
+    title: "FranklinDux",
+  },
   title: {
     default: "FranklinDux | Desenvolvimento de Software, Inteligência Artificial, Tecnologia e Negócios",
     template: "%s | FranklinDux",
@@ -38,10 +49,11 @@ export const metadata: Metadata = {
     title: "FranklinDux | Desenvolvimento de Software, Tecnologia e Negócios",
     description:
       "Blog do Franklin Dux sobre desenvolvimento de software, inteligência artificial, tecnologia e negócios. Compartilhando experiências, aprendizados e insights enquanto evoluo como profissional e pessoa.",
-    images: [{ url: "/me.jpeg", width: 800, height: 800, alt: "FranklinDux" }],
+    images: [{ url: "/franklindux-metatag-image.png", width: 800, height: 800, alt: "FranklinDux" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
+    images: [{ url: "/franklindux-metatag-image.png", width: 800, height: 800, alt: "FranklinDux" }],
     title: "FranklinDux | Desenvolvimento de Software, Tecnologia e Negócios",
     description:
       "Blog do Franklin Dux sobre desenvolvimento de software, inteligência artificial, tecnologia e negócios. Compartilhando experiências, aprendizados e insights enquanto evoluo como profissional e pessoa.",
