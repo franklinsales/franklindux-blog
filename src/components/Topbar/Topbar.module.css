@@ -5,7 +5,9 @@
   border-bottom: 1px solid #27272a;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 7;
+  display: flex;
+  justify-content: center;
 }
 
 .inner {
@@ -14,14 +16,14 @@
   justify-content: space-between;
   padding: 0 1.25rem;
   height: 60px;
-  width: 100%;
+  width: 90%;
 }
 
 .logo {
   font-family: var(--font-geist-mono), "Courier New", monospace;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #22d3ee;
+  color: #e3e7e8;
   letter-spacing: -0.02em;
   white-space: nowrap;
   transition: color 0.2s ease;
@@ -29,11 +31,11 @@
 }
 
 .logo:hover {
-  color: #67e8f9;
+  color: #6404f5;
 }
 
 .logo:focus-visible {
-  outline: 2px solid #22d3ee;
+  outline: 2px solid #6738ea;
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -75,7 +77,7 @@
   border-radius: 6px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 640px) {
   .logo {
     font-size: 1rem;
   }
@@ -86,6 +88,8 @@
   }
 
   .inner {
-    padding: 0 0.75rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    width: 98%;
   }
 }

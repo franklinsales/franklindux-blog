@@ -13,9 +13,9 @@
 }
 
 .button:hover {
-  color: #22d3ee;
-  background-color: rgba(34, 211, 238, 0.1);
-  border-color: rgba(34, 211, 238, 0.35);
+  color: #7b00ff;
+  background-color: rgba(119, 34, 238, 0.1);
+  border-color: rgba(155, 112, 241, 0.35);
 }
 
 .button:focus-visible {

@@ -9,8 +9,8 @@ export default function Hero() {
           <Image
             src="/me.jpeg"
             alt="Foto de FranklinDux"
-            width={80}
-            height={80}
+            width={120}
+            height={120}
             className={styles.avatar}
             priority
           />
