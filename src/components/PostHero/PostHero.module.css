@@ -37,3 +37,10 @@
     height: 460px;
   }
 }
+
+@media (min-width: 1600px) {
+  .hero {
+    height: 590px;
+  }
+}
+

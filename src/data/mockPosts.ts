@@ -8,5 +8,6 @@ export const mockPosts: Post[] = [
       "Iniciando a minha jornada em documentar as minhas experiências e aprendizados no desenvolvimento de software.",
     date: "2026-04-20",
     tags: ["FKDUX"],
+    image: "/posts/hello-world.png",
   },
 ];

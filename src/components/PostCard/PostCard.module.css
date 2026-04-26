@@ -25,7 +25,7 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 320px;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -108,13 +108,12 @@
 /* Desktop: image beside content when present */
 @media (max-width: 768px) {
   .link {
-    flex-direction: row;
+    /* flex-direction: row; */
   }
 
   .imageWrapper {
-    width: 220px;
     height: auto;
-    min-height: 160px;
+    min-height: 180px;
   }
 
   .content {
