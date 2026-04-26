@@ -107,9 +107,6 @@
 
 /* Desktop: image beside content when present */
 @media (max-width: 768px) {
-  .link {
-    /* flex-direction: row; */
-  }
 
   .imageWrapper {
     height: auto;

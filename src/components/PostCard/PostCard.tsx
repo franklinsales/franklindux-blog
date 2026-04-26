@@ -27,6 +27,8 @@ export default function PostCard({ post }: PostCardProps) {
               src={post.image}
               alt={post.title}
               fill
+              priority
+              loading="eager"
               className={styles.image}
               sizes="(max-width: 768px) 98vw, (max-width: 1200px) 90vw, 80vw"
             />
