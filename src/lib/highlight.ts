@@ -1,4 +1,5 @@
 import { Marked } from "marked";
+import markedKatex from "marked-katex-extension";
 import { createHighlighter, type BundledLanguage } from "shiki";
 
 type ShikiHighlighter = Awaited<ReturnType<typeof createHighlighter>>;
@@ -34,26 +35,29 @@ function getHighlighter(): Promise<ShikiHighlighter> {
 export async function renderMarkdown(content: string): Promise<string> {
   const hl = await getHighlighter();
 
-  const instance = new Marked({
-    renderer: {
-      code({ text, lang }: { text: string; lang?: string }): string {
-        const rawLang = lang?.split(" ")[0] as BundledLanguage | undefined;
-        const language: BundledLanguage =
-          rawLang && SUPPORTED_LANGS.includes(rawLang)
-            ? rawLang
-            : FALLBACK_LANG;
-        try {
-          return hl.codeToHtml(text, {
-            lang: language,
-            themes: { dark: "github-dark", light: "github-light" },
-            defaultColor: "dark",
-          });
-        } catch {
-          return `<pre class="shiki shiki-fallback"><code>${escapeHtml(text)}</code></pre>`;
-        }
+  const instance = new Marked(
+    markedKatex({ throwOnError: false }),
+    {
+      renderer: {
+        code({ text, lang }: { text: string; lang?: string }): string {
+          const rawLang = lang?.split(" ")[0] as BundledLanguage | undefined;
+          const language: BundledLanguage =
+            rawLang && SUPPORTED_LANGS.includes(rawLang)
+              ? rawLang
+              : FALLBACK_LANG;
+          try {
+            return hl.codeToHtml(text, {
+              lang: language,
+              themes: { dark: "github-dark", light: "github-light" },
+              defaultColor: "dark",
+            });
+          } catch {
+            return `<pre class="shiki shiki-fallback"><code>${escapeHtml(text)}</code></pre>`;
+          }
+        },
       },
-    },
-  });
+    }
+  );
 
   return await instance.parse(content);
 }
