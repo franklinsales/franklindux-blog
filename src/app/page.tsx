@@ -20,7 +20,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.container}>
           <section className={styles.posts} aria-label="Artigos recentes">
-            {mockPosts.map((post) => (
+            {[...mockPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => (
               <PostCard key={post.slug} post={post} />
             ))}
           </section>
