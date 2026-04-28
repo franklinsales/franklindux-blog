@@ -227,6 +227,39 @@
   border: 1px solid var(--color-border);
 }
 
+/* Tables */
+.content :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.content :global(th),
+.content :global(td) {
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  text-align: left;
+}
+
+.content :global(th) {
+  font-weight: 700;
+  color: var(--color-text);
+  background-color: var(--color-bg-elevated);
+}
+
+.content :global(tbody tr:nth-child(even)) {
+  background-color: var(--color-bg-elevated);
+}
+
+.content :global(tbody tr:hover) {
+  background-color: var(--color-pre-bg);
+}
+
 /* ─── No content fallback ───────────────────────────────────── */
 .noContent {
   font-size: 1rem;
