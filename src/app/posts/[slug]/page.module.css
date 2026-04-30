@@ -129,10 +129,10 @@
 }
 
 .content :global(p) {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--color-text-muted);
   line-height: 1.8;
-  margin-bottom: 1.22rem;
+  margin-bottom: 1.25rem;
   text-align: justify;
   /* max-width: 90ch; */
   /* font-weight: 500; */
