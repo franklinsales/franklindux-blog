@@ -31,7 +31,7 @@ O problema é que regras não escalam: a língua real é ambígua, contextual, e
 
 O fracasso dessas abordagens culminou no **Relatório ALPAC (1966)**, que levou a cortes significativos de financiamento e redirecionou a área para tarefas mais restritas.
 
-![Exemplo do fluxo lógico do projeto de tradução Georgetown-IBM](/georgetown-ibm-nlp-english-russian-translate-project-franklindux.png)
+![Exemplo do fluxo lógico do projeto de tradução Georgetown-IBM](/posts/georgetown-ibm-nlp-english-russian-translate-project-franklindux.png)
 
 *Figura: Exemplo do fluxo lógico do projeto de tradução Georgetown-IBM. Fonte: Ornstein, Jacob. "Mechanical Translation: New Challenge to Communication". Science, vol. 122, issue 3173, pp. 745-748, 21 Oct 1955.*
 
