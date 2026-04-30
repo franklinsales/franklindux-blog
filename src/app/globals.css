@@ -1,10 +1,10 @@
 /* ─── Dark theme (default) ─────────────────────────────────────── */
 :root,
 [data-theme="dark"] {
-  --color-bg: #09090a;
+  --color-bg: #000000;
   --color-bg-elevated: #161618;
   --color-text: #e2e8f0;
-  --color-text-strong: #d2d3da;
+  --color-text-strong: #c7c8cf;
   --color-text-muted: #aeb1b7;
   --color-text-subtle: #64748b;
   --color-accent: #1e293b;
