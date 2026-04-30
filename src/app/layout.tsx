@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import CookieConsent from "@/components/CookieConsent/CookieConsent";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 
@@ -86,6 +87,7 @@ export default function RootLayout({
         />
       </head>
       <body>{children}</body>
+      <CookieConsent />
     </html>
   );
 }
