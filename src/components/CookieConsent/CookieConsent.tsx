@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect, startTransition } from "react";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import styles from "./CookieConsent.module.css";
+
+declare function gtag(...args: unknown[]): void;
 
 type Consent = "all" | "essential";
 
@@ -75,15 +76,19 @@ export default function CookieConsent() {
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
+    const resolved = saved === "all" ? "all" : saved === "essential" ? "essential" : null;
+    // Restore consent on hydration if the user already accepted previously
+    if (resolved === "all") {
+      gtag("consent", "update", { analytics_storage: "granted" });
+    }
     startTransition(() => {
-      setConsent(
-        saved === "all" ? "all" : saved === "essential" ? "essential" : null
-      );
+      setConsent(resolved);
     });
   }, []);
 
   const handleAcceptAll = () => {
     localStorage.setItem(STORAGE_KEY, "all");
+    gtag("consent", "update", { analytics_storage: "granted" });
     setConsent("all");
   };
 
@@ -95,12 +100,8 @@ export default function CookieConsent() {
   // Not hydrated yet — render nothing to avoid mismatch
   if (consent === undefined) return null;
 
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
-
   return (
     <>
-      {consent === "all" && gaId && <GoogleAnalytics gaId={gaId} />}
-
       {consent === null && (
         <div
           className={styles.backdrop}
