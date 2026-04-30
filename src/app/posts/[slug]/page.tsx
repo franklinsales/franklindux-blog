@@ -9,6 +9,7 @@ import PostHero from "@/components/PostHero/PostHero";
 import AuthorCard from "@/components/AuthorCard/AuthorCard";
 import { mockPosts } from "@/data/mockPosts";
 import { renderMarkdown } from "@/lib/highlight";
+import PostContent from "@/components/PostContent/PostContent";
 import styles from "./page.module.css";
 
 interface PageProps {
@@ -100,9 +101,9 @@ export default async function PostPage({ params }: PageProps) {
           <div className={styles.divider} aria-hidden="true" />
 
           {contentHtml ? (
-            <article
-              className={styles.content}
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            <PostContent
+              contentHtml={contentHtml}
+              contentClassName={styles.content}
             />
           ) : (
             <p className={styles.noContent}>Conteúdo em breve.</p>

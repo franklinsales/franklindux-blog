@@ -129,7 +129,7 @@
 }
 
 .content :global(p) {
-  font-size: 1.2rem;
+  font-size: var(--post-p-size, 1.2rem);
   color: var(--color-text-muted);
   line-height: 1.8;
   margin-bottom: 1.25rem;
@@ -168,7 +168,7 @@
 }
 
 .content :global(li) {
-  font-size: 1.2rem;
+  font-size: var(--post-li-size, 1.2rem);
   color: var(--color-text-muted);
   line-height: 1.7;
 }
@@ -300,10 +300,10 @@
 
 @media screen and (max-width: 600px) {
   .content :global(p) {
-    font-size: 1.15rem;
+    font-size: var(--post-p-size, 1.15rem);
   }
 
   .content :global(li) {
-    font-size: 1.1rem;
+    font-size: var(--post-li-size, 1.1rem);
   }
 }
