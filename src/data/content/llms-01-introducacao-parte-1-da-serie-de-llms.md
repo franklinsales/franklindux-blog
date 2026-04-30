@@ -23,17 +23,66 @@ Para entender o que torna os LLMs tão poderosos, é necessário situá-los dent
 
 ### 2.1 Uma linha do tempo nos avanços do NLP
 
-**Anos 1950–1960:** o famoso matemático Alan Turing (o pai da computação moderna) lançou uma pergunta provocativa: "As máquinas podem pensar?" (1950) e propôs o Teste de Turing, no qual uma máquina tentaria se passar por um ser humano em uma conversa. Nesse mesmo período, especialmente com iniciativas de tradução automática como o Experimento Georgetown-IBM, surgiram os primeiros sistemas de processamento de linguagem — desenvolvimentos que corriam em paralelo à fundação do conceito e do campo da Inteligência Artificial. Após a famosa Conferência de Dartmouth, onde John McCarthy cunhou o termo "inteligência artificial", esses esforços, sobre inteligência artificial, passaram a ser enquadrados dentro de um novo campo científico, e o NLP consolidou-se como uma de suas subáreas centrais.
+**Anos 1950–1960:** o famoso matemático Alan Turing (o pai da computação moderna) lançou uma pergunta provocativa: "As máquinas podem pensar?" (1950) e propôs o Teste de Turing, no qual uma máquina tentaria se passar por um ser humano em uma conversa. Nesse mesmo período, especialmente com iniciativas de tradução automática como o Experimento Georgetown-IBM (1953), surgiram os primeiros sistemas de processamento de linguagem — desenvolvimentos que corriam em paralelo à fundação do conceito e do campo da Inteligência Artificial. Após a famosa Conferência de Dartmouth, onde John McCarthy cunhou o termo "inteligência artificial", esses esforços, sobre inteligência artificial, passaram a ser enquadrados dentro de um novo campo científico, e o NLP consolidou-se como uma de suas subáreas centrais.
 
 A abordagem dominante era baseada em **regras escritas manualmente por linguistas**, como gramáticas formais, dicionários bilíngues e parsers sintáticos ainda rudimentares. Havia forte interesse em tradução automática, especialmente no contexto da Guerra Fria (inglês–russo). A ideia era codificar a linguagem como um sistema lógico.
 
-O problema é que regras não escalam: a língua real é ambígua, contextual, evolutiva e altamente variável, e qualquer construção não prevista quebrava o sistema. Além disso, o poder computacional da época era extremamente limitado — o IBM 704, usado no Experimento Georgetown-IBM, operava com cerca de 4 KB de memória RAM, qualquer smartphone moderno tem milhões de vezes mais poder de processamento e memória.
+O problema é que regras não escalam: a língua real é ambígua, contextual, evolutiva e altamente variável, e qualquer construção não prevista quebrava o sistema. Além disso, o poder computacional da época era extremamente limitado — o IBM 701, usado no Experimento Georgetown-IBM, é inferior a qualquer smartphone moderno, que tem milhões de vezes mais poder de processamento e memória.
 
 O fracasso dessas abordagens culminou no **Relatório ALPAC (1966)**, que levou a cortes significativos de financiamento e redirecionou a área para tarefas mais restritas.
+
+
+#### Exemplo: Georgetown-IBM Project (1953)
 
 ![Exemplo do fluxo lógico do projeto de tradução Georgetown-IBM](/posts/georgetown-ibm-nlp-english-russian-translate-project-franklindux.png)
 
 *Figura: Exemplo do fluxo lógico do projeto de tradução Georgetown-IBM. Fonte: Ornstein, Jacob. "Mechanical Translation: New Challenge to Communication". Science, vol. 122, issue 3173, pp. 745-748, 21 Oct 1955.*
+
+#### Exemplo: Chomsky, N. - Syntactic Structures (1957)
+*Fonte original:** Chomsky, N. (1957). *Syntactic Structures*. Mouton & Co.
+ 
+Noam Chomsky publicou *Syntactic Structures* em 1957, propondo que a linguagem humana poderia ser descrita por **gramáticas formais** — conjuntos de regras de reescrita que geram todas as frases gramaticalmente válidas de uma língua.
+ 
+A hierarquia de Chomsky classifica gramáticas por poder expressivo. Para NLP, a mais relevante era a **gramática livre de contexto** (*Context-Free Grammar* — CFG), onde cada regra tem a forma:
+ 
+```
+símbolo_não-terminal → sequência de símbolos
+```
+ 
+**Exemplo de gramática para frases simples em português:**
+ 
+```
+S  → NP VP
+NP → Det N
+VP → V NP
+Det → "o" | "a" | "um" | "uma"
+N  → "gato" | "rato" | "leite"
+V  → "bebeu" | "viu" | "comeu"
+```
+
+Em resumo: `S` é o símbolo inicial que representa uma frase completa. `NP` (frase nominal) e `VP` (frase verbal) são símbolos não-terminais que podem ser expandidos usando as regras. `Det`, `N` e `V` são símbolos terminais que correspondem a palavras reais.
+ 
+Com essas regras, o sistema consegue **gerar** (e **verificar**) frases como:
+ 
+```
+S
+├── NP: "o gato"
+│     ├── Det: "o"
+│     └── N:   "gato"
+└── VP: "bebeu o leite"
+      ├── V:  "bebeu"
+      └── NP: "o leite"
+            ├── Det: "o"
+            └── N:   "leite"
+```
+ 
+E rejeita (não deriva) frases como:
+ 
+```
+"gato o leite bebeu o"  →  ✗ (não derivável pelas regras)
+```
+ 
+*O problema:* a regra `NP → Det N` não sabe nada sobre o mundo. Ela aceita igualmente "o gato bebeu leite" e "o leite bebeu gato" — ambas são gramaticalmente válidas pela gramática, mas apenas uma faz sentido semanticamente. Regras sintáticas não capturam significado.
 
 **Anos 1970–1980:** A abordagem simbólica se aprofundou. Sistemas especialistas e redes semânticas tentavam representar o conhecimento do mundo de forma estruturada — projetos como SHRDLU conseguiam manipular objetos em ambientes virtuais restritos usando linguagem natural controlada. Esses sistemas funcionavam bem em domínios fechados, mas eram frágeis fora deles. Ao mesmo tempo, começaram a surgir os primeiros esforços de corpora anotados — incluindo os trabalhos iniciais que culminariam no Penn Treebank, publicado formalmente em 1992–1993. A limitação dos sistemas simbólicos, somada a expectativas infladas, levou a ciclos de redução de financiamento. O chamado **segundo inverno da IA** teve início no final dos anos 1980 e se estendeu até meados dos anos 1990.
 
