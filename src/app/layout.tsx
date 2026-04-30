@@ -86,10 +86,13 @@ export default function RootLayout({
           }}
         />
         {/* Google tag – Consent Mode v2: script always present so Google detects it,
-            but analytics_storage starts as 'denied' until the user consents. */}
+            but analytics_storage starts as 'denied' until the user consents.
+            Intentionally uses inline scripts instead of <GoogleAnalytics> because
+            the component does not support setting consent defaults before gtag('config'). */}
+        {/* eslint-disable-next-line @next/next/next-script-for-ga */}
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-FM4LXLS2J0"
         />
         <script
           dangerouslySetInnerHTML={{
@@ -103,7 +106,7 @@ export default function RootLayout({
                 ad_personalization: 'denied'
               });
               gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+              gtag('config', 'G-FM4LXLS2J0');
             `,
           }}
         />
