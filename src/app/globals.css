@@ -4,6 +4,7 @@
   --color-bg: #09090a;
   --color-bg-elevated: #161618;
   --color-text: #e2e8f0;
+  --color-text-strong: #c0c1c8;
   --color-text-muted: #9698a0;
   --color-text-subtle: #64748b;
   --color-accent: #1e293b;
@@ -26,6 +27,7 @@
   --color-bg: #f0f2f3;
   --color-bg-elevated: #ffffff;
   --color-text: #0f172a;
+  --color-text-strong: #2b323c;
   --color-text-muted: #475569;
   --color-text-subtle: #94a3b8;
   --color-accent: #0284c7;
