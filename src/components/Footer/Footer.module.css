@@ -1,8 +1,8 @@
 /* Footer always uses dark graphite — independent of theme */
 .footer {
   width: 100%;
-  background-color: #18181b;
-  border-top: 1px solid #27272a;
+  background-color: var(--color-footer-bg);
+  border-top: 1px solid var(--color-footer-border);
   padding: 1.75rem 1rem;
   margin-top: auto;
 }
@@ -18,16 +18,16 @@
 
 .text {
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: var(--color-footer-text);
 }
 
 .brand {
-  color: #cbb8f4;
+  color: var(--color-footer-brand);
   font-weight: 600;
   font-family: var(--font-geist-mono), monospace;
 }
 
 .sub {
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--color-footer-sub);
 }
