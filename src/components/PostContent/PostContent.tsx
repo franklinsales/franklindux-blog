@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useSyncExternalStore } from "react";
 import styles from "./PostContent.module.css";
 
 interface PostContentProps {
@@ -65,6 +65,21 @@ export default function PostContent({
 
   const pSize = (BASE_P + step * STEP).toFixed(2);
   const liSize = (BASE_LI + step * STEP).toFixed(2);
+
+  useEffect(() => {
+    import("mermaid").then((mod) => {
+      const mermaid = mod.default;
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "dark",
+        flowchart: { useMaxWidth: true },
+        themeVariables: {
+          fontSize: "28px",
+        },
+      });
+      mermaid.run({ querySelector: ".mermaid" });
+    });
+  }, [contentHtml]);
 
   return (
     <>

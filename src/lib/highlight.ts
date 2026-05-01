@@ -40,10 +40,15 @@ export async function renderMarkdown(content: string): Promise<string> {
     {
       renderer: {
         code({ text, lang }: { text: string; lang?: string }): string {
-          const rawLang = lang?.split(" ")[0] as BundledLanguage | undefined;
+          const rawLang = lang?.split(" ")[0];
+
+          if (rawLang === "mermaid") {
+            return `<div class="mermaid">${escapeHtml(text)}</div>`;
+          }
+
           const language: BundledLanguage =
-            rawLang && SUPPORTED_LANGS.includes(rawLang)
-              ? rawLang
+            rawLang && SUPPORTED_LANGS.includes(rawLang as BundledLanguage)
+              ? (rawLang as BundledLanguage)
               : FALLBACK_LANG;
           try {
             return hl.codeToHtml(text, {

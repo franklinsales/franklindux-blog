@@ -263,6 +263,21 @@
   background-color: var(--color-pre-bg);
 }
 
+/* ─── Mermaid diagrams ─────────────────────────────────────────── */
+
+/* mermaid text size is controlled via mermaid.initialize themeVariables */
+
+/* Reset prose styles that bleed into mermaid's internal <p> elements */
+.content :global(.mermaid p) {
+  font-size: 20px;
+  color: inherit;
+  line-height: inherit;
+  margin-bottom: 0;
+  letter-spacing: normal;
+  font-weight: inherit;
+  width: auto;
+}
+
 /* ─── No content fallback ───────────────────────────────────── */
 .noContent {
   font-size: 1rem;

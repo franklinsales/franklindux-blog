@@ -4,16 +4,29 @@
 
 ## 1. O que é um LLM?
 
-LLM é a sigla para *Large Language Model* — em português, **Modelo de Linguagem de Grande Escala**. É um sistema computacional treinado em um enorme volume de dados textuais para processar e gerar texto em linguagem natural (como o português e o inglês, ou até mesmo código de programação).
+LLM é a sigla para *Large Language Model* — em português, **Modelo de Linguagem de Grande Escala**. Trata-se de um sistema computacional treinado em um volume enorme de dados textuais para processar e gerar linguagem natural: português, inglês, código de programação, entre outros.
 
-O adjetivo *large* (grande) refere-se a duas dimensões principais do modelo:
+O adjetivo *large* (grande) no nome não é apenas um detalhe de marketing, refere-se a duas dimensões principais do modelo:
 
-- **Volume de dados de treinamento**: textos na escala de trilhões de palavras, extraídos de livros, artigos, páginas da web, código-fonte, entre outros.
-- **Número de parâmetros**: os *weights* (pesos) do modelo — valores numéricos que controlam a força de influência entre tokens e resultam do processo de treinamento. Funcionam como a **memória aprendida** do modelo: neles estão codificadas as relações entre palavras, frases e conceitos. Modelos modernos operam na faixa de bilhões a trilhões de parâmetros, o que lhes confere uma capacidade impressionante de compreensão e geração de texto.
+1. **Volume de dados de treinamento**: textos na escala de trilhões de palavras, extraídos de livros, artigos, páginas da web, código-fonte e muito mais. Essa diversidade e quantidade de dados permitem que o modelo aprenda uma representação rica e abrangente da linguagem humana, incluindo nuances, estilos, fatos e padrões de raciocínio.
+2. **Número de parâmetros**: os chamados *weights* (pesos) do modelo, que são valores numéricos que controlam a força de influência entre as unidades de texto e que surgem do próprio processo de treinamento. Pense neles como a**memória aprendida** do modelo — é neles que ficam codificadas as relações entre palavras, frases e conceitos. Modelos modernos operam na faixa de bilhões a trilhões de parâmetros, o que lhes confere uma capacidade impressionante de compreensão e geração de texto.
 
-Em termos funcionais, um LLM é capaz de realizar tarefas como responder perguntas, traduzir idiomas, resumir textos, gerar código de programação e manter conversas coerentes — sem ter sido explicitamente programado para nenhuma dessas tarefas específicas. Esse comportamento é resultado do treinamento em larga escala, que permite ao modelo aprender padrões complexos na linguagem e aplicá-los de forma flexível.
+Na prática, o que isso significa? Significa que um LLM consegue responder perguntas, traduzir idiomas, resumir textos, gerar código e manter conversas coerentes — **sem ter sido explicitamente programado para nenhuma dessas tarefas**. Esse comportamento emerge do treinamento em larga escala: ao ser exposto a padrões complexos da linguagem, o modelo aprende a aplicá-los de forma flexível às mais variadas situações.
 
-Exemplos proeminentes incluem GPT-4 (OpenAI), Claude (Anthropic), Gemini (Google) e LLaMA (Meta).
+Os exemplos mais proeminentes atualmente incluem GPT (OpenAI), Claude (Anthropic), DeepSeek (DeepSeek), Gemini (Google). Todos eles são LLMs, mas cada um tem suas particularidades em termos de arquitetura, dados de treinamento e capacidades específicas. O que os une é a base comum de serem modelos de linguagem treinados em larga escala, capazes de generalizar para uma ampla gama de tarefas linguísticas.
+
+Resumo visual:
+```mermaid
+flowchart TD
+    A([LLM — Large Language Model]) --> B[Treinado em textos em larga escala\nlivros, artigos, páginas web, código...]
+    B --> C{Por que 'large'?}
+    C --> D[Volume de dados\ntrilhões de palavras]
+    C --> E[Parâmetros — weights\nbilhões a trilhões]
+    D --> F[Aprende padrões complexos da linguagem]
+    E --> F
+    F --> G[Responde, traduz, resume, gera código\nsem ser programado para cada tarefa]
+    G --> H([Exemplos: GPT · Claude · Gemini · DeepSeek])
+```
 
 ---
 

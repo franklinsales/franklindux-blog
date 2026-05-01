@@ -1,9 +1,9 @@
 /* ─── Dark theme (default) ─────────────────────────────────────── */
 :root,
 [data-theme="dark"] {
-  --color-bg: #0f1115;
+  --color-bg: #1f1f1e;
   --color-bg-elevated: #13151a;
-  --color-text: #e5e7eb;
+  --color-text: #ebecef;
   --color-text-strong: #f3f4f6;
   --color-text-muted: #d1d5db;
   --color-text-subtle: #6b7280;
@@ -26,12 +26,12 @@
   --color-home-subtitle: #d3d4d6;
 
   /* ── Post content typography ── */
-  --color-post-h1: #f3f4f6;
-  --color-post-h2: #e5e7eb;
-  --color-post-h3: #d1d5db;
-  --color-post-h4: #d1d5db;
-  --color-post-p: #c9cdd4;
-  --color-post-strong: #e5e7eb;
+  --color-post-h1: #ebecef;
+  --color-post-h2: #ebecef;
+  --color-post-h3: #ebecef;
+  --color-post-h4: #ebecef;
+  --color-post-p: #ebecef;
+  --color-post-strong: #ebecef;
   --color-post-link: #a78bfa;
   --color-post-link-hover: #c4b5fd;
 
