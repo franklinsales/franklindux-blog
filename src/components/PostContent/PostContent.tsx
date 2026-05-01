@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useSyncExternalStore } from "react";
 import styles from "./PostContent.module.css";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 
 interface PostContentProps {
   contentHtml: string;
@@ -120,6 +121,8 @@ export default function PostContent({
         >
           A+
         </button>
+        <span className={styles.separator} aria-hidden="true" />
+        <ThemeToggle />
       </div>
 
       <article
