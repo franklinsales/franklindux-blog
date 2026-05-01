@@ -1,6 +1,6 @@
 .main {
   flex: 1;
-  padding: 2.5rem 0 4rem;
+  padding: 2.5rem 0.9rem;
 }
 
 /* ─── Responsive container (same breakpoints as home) ─────── */
@@ -303,7 +303,7 @@
   }
 
   .content :global(li) {
-    font-size: var(--post-li-size, 1.1rem);
+    font-size: var(--post-li-size, 1.15rem);
   }
 }
 
