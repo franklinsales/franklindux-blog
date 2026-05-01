@@ -130,11 +130,9 @@
   font-size: var(--post-p-size,  1.41rem);
   color: var(--color-post-p);
   line-height: 1.8;
-  margin-bottom: 1.25rem;
-  text-align: justify;
-  letter-spacing: 0.02em;
-  /* max-width: 90ch; */
-  /* font-weight: 500; */
+  margin-bottom: 1.65rem;
+  letter-spacing: 0.01em;
+  font-weight: 400;
 }
 
 .content :global(strong) {
@@ -310,9 +308,11 @@
 @media screen and (min-width: 2100px) {
   .content :global(p) {
     font-size: var(--post-p-size,  1.41rem);
+    width: 85ch;
   }
 
   .content :global(li) {
     font-size: var(--post-li-size,  1.41rem);
+    width: 85ch;
   }
 }
