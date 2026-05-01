@@ -3,9 +3,9 @@
 [data-theme="dark"] {
   --color-bg: #313237;
   --color-bg-elevated: #13151a;
-  --color-text: #d6d9e1;
-  --color-text-strong: #d6d9e1;
-  --color-text-muted: #d6d9e1;
+  --color-text: #e0e3ec;
+  --color-text-strong: #e0e3ec;
+  --color-text-muted: #e0e3ec;
   --color-text-subtle: #6b7280;
   --color-accent: #1e293b;
   --color-accent-hover: #360b7c;
@@ -26,12 +26,12 @@
   --color-home-subtitle: #d3d4d6;
 
   /* ── Post content typography ── */
-  --color-post-h1: #d6d9e1;
-  --color-post-h2: #d6d9e1;
-  --color-post-h3: #d6d9e1;
-  --color-post-h4: #d6d9e1;
-  --color-post-p: #d6d9e1;
-  --color-post-strong: #d6d9e1;
+  --color-post-h1: #e0e3ec;
+  --color-post-h2: #e0e3ec;
+  --color-post-h3: #e0e3ec;
+  --color-post-h4: #e0e3ec;
+  --color-post-p: #e0e3ec;
+  --color-post-strong: #e0e3ec;
   --color-post-link: #a78bfa;
   --color-post-link-hover: #c4b5fd;
 
