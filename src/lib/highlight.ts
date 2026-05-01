@@ -43,7 +43,7 @@ export async function renderMarkdown(content: string): Promise<string> {
           const rawLang = lang?.split(" ")[0];
 
           if (rawLang === "mermaid") {
-            return `<div class="mermaid">${escapeHtml(text)}</div>`;
+            return `<div class="mermaid" data-source="${escapeHtml(text)}">${escapeHtml(text)}</div>`;
           }
 
           const language: BundledLanguage =

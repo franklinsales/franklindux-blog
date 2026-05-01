@@ -13,8 +13,8 @@ const MIN_STEP = -3;
 const MAX_STEP = 5;
 const STORAGE_KEY = "post-font-step";
 
-const BASE_P = 1.4;
-const BASE_LI = 1.2;
+const BASE_P = 1.3;
+const BASE_LI = 1.3;
 
 // ── Tiny external store ──────────────────────────────────────────
 const listeners = new Set<() => void>();
@@ -69,6 +69,14 @@ export default function PostContent({
   useEffect(() => {
     import("mermaid").then((mod) => {
       const mermaid = mod.default;
+      // Restore original source on already-rendered diagrams so mermaid can re-render them
+      document.querySelectorAll<HTMLElement>(".mermaid[data-processed]").forEach((el) => {
+        const source = el.getAttribute("data-source");
+        if (source) {
+          el.removeAttribute("data-processed");
+          el.innerHTML = source;
+        }
+      });
       mermaid.initialize({
         startOnLoad: false,
         theme: "dark",
@@ -79,7 +87,7 @@ export default function PostContent({
       });
       mermaid.run({ querySelector: ".mermaid" });
     });
-  }, [contentHtml]);
+  }, [contentHtml, step]);
 
   return (
     <>

@@ -56,7 +56,7 @@
   font-size: clamp(1.3rem, 2vw, 1.1rem);
   color: var(--color-post-p);
   line-height: 1.65;
-  max-width: 90ch;
+  width: 100%;
 }
 
 .tags {
@@ -112,7 +112,7 @@
 }
 
 .content :global(h3) {
-  font-size: clamp(1.1rem, 2.5vw,  1.41rem);
+  font-size: clamp(1.1rem, 2.5vw,  1.31rem);
   font-weight: 600;
   color: var(--color-post-h3);
   margin: 1.75rem 0 0.75rem;
@@ -127,7 +127,7 @@
 }
 
 .content :global(p) {
-  font-size: var(--post-p-size,  1.41rem);
+  font-size: var(--post-p-size,  1.31rem);
   color: var(--color-post-p);
   line-height: 1.8;
   margin-bottom: 1.65rem;
@@ -165,7 +165,7 @@
 }
 
 .content :global(li) {
-  font-size: var(--post-li-size,  1.41rem);
+  font-size: var(--post-li-size,  1.31rem);
   color: var(--color-post-p);
   line-height: 1.7;
 }
@@ -321,13 +321,16 @@
 }
 
 @media screen and (min-width: 2100px) {
+  .container {
+    width: 30%;
+  }
   .content :global(p) {
-    font-size: var(--post-p-size,  1.41rem);
-    width: 85ch;
+    font-size: var(--post-p-size,  1.31rem);
+    width: 100%;
   }
 
   .content :global(li) {
-    font-size: var(--post-li-size,  1.41rem);
-    width: 85ch;
+    font-size: var(--post-li-size,  1.31rem);
+    width: 100%;
   }
 }
