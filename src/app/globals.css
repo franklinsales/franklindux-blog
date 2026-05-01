@@ -1,10 +1,10 @@
 /* ─── Dark theme (default) ─────────────────────────────────────── */
 :root,
 [data-theme="dark"] {
-  --color-bg: #40424b;
+  --color-bg: #33343a;
   --color-bg-elevated: #161618;
-  --color-text: #ffffff;
-  --color-text-strong: #ffffff;
+  --color-text: #dadada;
+  --color-text-strong: #dadada;
   --color-text-muted: #ffffff;
   --color-text-subtle: #64748b;
   --color-accent: #1e293b;
@@ -13,7 +13,7 @@
   --color-card-bg: #131317;
   --color-card-hover-bg: #101017;
   --color-card-border: #1e293b;
-  --color-card-accent: #360b7c;
+  --color-card-accent: #241937;
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-card-hover: 0 4px 16px rgba(82, 24, 188, 0.12);
   --color-pre-bg: #393939;

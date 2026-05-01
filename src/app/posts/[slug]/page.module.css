@@ -66,15 +66,15 @@
 }
 
 .tag {
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
   background-color: var(--color-card-accent);
-  color: #fff;
+  color: var(--color-text);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: .06em;
+  font-size: .9rem;
+  font-weight: 700;
   font-family: var(--font-geist-mono), monospace;
+  border-radius: 4px;
+  padding: .2rem .6rem;
 }
 
 .date {
