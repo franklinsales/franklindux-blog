@@ -1,7 +1,7 @@
 /* ─── Dark theme (default) ─────────────────────────────────────── */
 :root,
 [data-theme="dark"] {
-  --color-bg: #1f1f1e;
+  --color-bg: #1b1b1b;
   --color-bg-elevated: #13151a;
   --color-text: #ebecef;
   --color-text-strong: #c2c3c6;
