@@ -1,7 +1,7 @@
 /* ─── Dark theme (default) ─────────────────────────────────────── */
 :root,
 [data-theme="dark"] {
-  --color-bg: #1e1f23;
+  --color-bg: #131313;
   --color-bg-elevated: #161618;
   --color-text: #dadada;
   --color-text-strong: #dadada;
@@ -13,7 +13,7 @@
   --color-card-bg: #131317;
   --color-card-hover-bg: #101017;
   --color-card-border: #1e293b;
-  --color-card-accent: #241937;
+  --color-card-accent: #5c5c5c;
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-card-hover: 0 4px 16px rgba(82, 24, 188, 0.12);
   --color-pre-bg: #272525;
@@ -26,12 +26,12 @@
   --color-home-subtitle: #d3d4d6;
 
   /* ── Post content typography ── */
-  --color-post-h1: #c6c6c6;
-  --color-post-h2: #c6c6c6;
-  --color-post-h3: #c6c6c6;
-  --color-post-h4: #c6c6c6;
-  --color-post-p: #c6c6c6;
-  --color-post-strong: #c6c6c6;
+  --color-post-h1: #e4e0e0;
+  --color-post-h2: #e4e0e0;
+  --color-post-h3: #e4e0e0;
+  --color-post-h4: #e4e0e0;
+  --color-post-p: #e4e0e0;
+  --color-post-strong: #e4e0e0;
   --color-post-link: #a78bfa;
   --color-post-link-hover: #c4b5fd;
 

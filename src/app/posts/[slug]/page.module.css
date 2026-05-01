@@ -45,16 +45,16 @@
 }
 
 .title {
-  font-size: clamp(1.6rem, 4vw, 2.5rem);
-  font-weight: 800;
-  color: var(--color-text);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-post-h1);
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
 
 .subtitle {
-  font-size: clamp(1.4rem, 2vw, 1.15rem);
-  color: var(--color-text-muted);
+  font-size: clamp(1.3rem, 2vw, 1.1rem);
+  color: var(--color-post-p);
   line-height: 1.65;
   max-width: 90ch;
 }
