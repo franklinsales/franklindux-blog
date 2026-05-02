@@ -1,7 +1,3 @@
-# O que é um LLM? — Da Definição ao Entendimento Profundo
-
----
-
 ## 1. O que é um LLM?
 
 LLM é a sigla para *Large Language Model* — em português, **Modelo de Linguagem de Grande Escala**. Trata-se de um sistema computacional treinado em um volume enorme de dados textuais para processar e gerar linguagem natural: português, inglês, código de programação, entre outros.
