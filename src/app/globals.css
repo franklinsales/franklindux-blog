@@ -1,7 +1,7 @@
 /* ─── Dark theme (default) ─────────────────────────────────────── */
 :root,
 [data-theme="dark"] {
-  --color-bg: #292420;
+  --color-bg: #101418;
   --color-bg-elevated: #13151a;
   --color-text: #e0e3ec;
   --color-text-strong: #e0e3ec;
@@ -123,7 +123,7 @@ body {
   font-weight: 400;
   /* -webkit-font-smoothing: antialiased; */
   /* -moz-osx-font-smoothing: grayscale; */
-  transition: background-color 0.25s ease, color 0.25s ease;
+  /* transition: background-color 0.25s ease, color 0.25s ease; */
   line-height: 1.65;
 }
 
