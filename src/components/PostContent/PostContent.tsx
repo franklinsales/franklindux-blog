@@ -14,8 +14,8 @@ const MIN_STEP = -3;
 const MAX_STEP = 5;
 const STORAGE_KEY = "post-font-step";
 
-const BASE_P = 1.3;
-const BASE_LI = 1.3;
+const BASE_P = 1.25;
+const BASE_LI = 1.25;
 
 // ── Tiny external store ──────────────────────────────────────────
 const listeners = new Set<() => void>();

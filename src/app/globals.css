@@ -30,8 +30,8 @@
   --color-post-h2: #e0e3ec;
   --color-post-h3: #e0e3ec;
   --color-post-h4: #e0e3ec;
-  --color-post-p: #e0e3ec;
-  --color-post-strong: #e0e3ec;
+  --color-post-p: #dbdde3;
+  --color-post-strong: #dbdde3;
   --color-post-link: #a78bfa;
   --color-post-link-hover: #c4b5fd;
 
@@ -42,6 +42,10 @@
   --color-footer-brand: #cbb8f4;
   --color-footer-sub: #64748b;
   --color-footer-link: #cbb8f4;
+
+  /* -- Action Buttons -- */
+  --color-action-bg: #4d127c;
+  --color-action-hover-bg: #360b7c;
 }
 
 /* ─── Light theme ───────────────────────────────────────────────── */
@@ -79,6 +83,10 @@
   --color-post-strong: #1e293b;
   --color-post-link: #0284c7;
   --color-post-link-hover: #0369a1;
+
+  /* -- Action Buttons -- */
+  --color-action-bg: #292931;
+  --color-action-hover-bg: #1b1b22;
 
   /* Footer is always dark — no override needed */
 }
