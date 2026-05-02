@@ -131,13 +131,11 @@
 }
 
 .content :global(p) {
-  font-size: var(--post-p-size,  1.25rem);
+  font-size: var(--post-p-size,  1.22rem);
   color: var(--color-post-p);
   line-height: 1.8;
   margin-bottom: 1.65rem;
-  letter-spacing: 0.01em;
-  font-weight: 400;
-  letter-spacing: 0.03em;
+  font-weight: 500;
 }
 
 .content :global(strong) {
@@ -165,14 +163,14 @@
 .content :global(ul),
 .content :global(ol) {
   padding-left: 1.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.22rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
 .content :global(li) {
-  font-size: var(--post-li-size,  1.25rem);
+  font-size: var(--post-li-size,  1.22rem);
   color: var(--color-post-p);
   line-height: 1.7;
   letter-spacing: 0.03em;
@@ -180,7 +178,7 @@
 
 .content :global(blockquote) {
   border-left: 3px solid var(--color-accent);
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.22rem;
   margin: 1.5rem 0;
   background-color: var(--color-bg-elevated);
   border-radius: 0 6px 6px 0;
@@ -213,7 +211,7 @@
 /* Shiki code blocks */
 .content :global(.shiki) {
   border-radius: 8px;
-  padding: 1.25rem 1.5rem;
+  padding: 1.22rem 1.5rem;
   overflow-x: auto;
   margin: 1.5rem 0;
   font-size: 1.1rem;
@@ -333,12 +331,12 @@
     width: 30%;
   }
   .content :global(p) {
-    font-size: var(--post-p-size,  1.25rem);
+    font-size: var(--post-p-size,  1.22rem);
     width: 100%;
   }
 
   .content :global(li) {
-    font-size: var(--post-li-size,  1.25rem);
+    font-size: var(--post-li-size,  1.22rem);
     width: 100%;
   }
 }
