@@ -108,11 +108,11 @@ Ainda nesse período, mas por um caminho diferente, as redes neurais recorrentes
 
 O problema é que, na prática, RNNs simples tinham dificuldade em manter informação por sequências longas — o chamado problema do gradiente desvanecente. A solução veio com as **LSTMs** (*Long Short-Term Memory*, Hochreiter & Schmidhuber, 1997), que introduziram mecanismos de memória explícita, controlando o que guardar e o que descartar. As LSTMs dominaram tarefas como reconhecimento de fala, tradução e geração de texto ao longo dos anos 2000 e início dos 2010. Eram poderosas, mas lentas: o processamento sequencial impedia paralelização, o que limitava a escala.
 
-**Anos 2013–2014:** Os embeddings mudaram a base da representação. **Word2Vec (2013)** e **GloVe (2014)** aprendiam vetores densos para palavras com base em seu contexto de uso — em vez de representar palavras como categorias isoladas, passaram a representá-las como pontos num espaço matemático. Palavras semanticamente semelhantes ocupam regiões próximas nesse espaço, o que permitia capturar relações sutis, como analogias: o exemplo clássico é `*`rei − homem + mulher ≈ rainha`, demonstrando que o modelo aprendeu a relação entre os conceitos, não apenas a frequência de palavras.
+**Anos 2013–2014:** Os embeddings mudaram a base da representação. **Word2Vec (2013)** e **GloVe (2014)** aprendiam vetores densos para palavras com base em seu contexto de uso — em vez de representar palavras como categorias isoladas, passaram a representá-las como pontos num espaço matemático. Palavras semanticamente semelhantes ocupam regiões próximas nesse espaço, o que permitia capturar relações sutis, como analogias: o exemplo clássico é `rei − homem + mulher ≈ rainha`, demonstrando que o modelo aprendeu a relação entre os conceitos, não apenas a frequência de palavras.
 
 O avanço era real, mas havia um limite importante. Esses embeddings são *context-free*: cada palavra recebe uma única representação fixa, independentemente do contexto em que aparece. A palavra "banco" — seja uma instituição financeira ou um assento de praça — recebia exatamente o mesmo vetor. O modelo não distinguia.
 
-**2017:** O **Transformer**, O Transformer — introduzido no artigo *Attention Is All You Need* (Vaswani et al., 2017) — redefiniu a arquitetura dominante. Em vez de processar o texto palavra por palavra, como faziam as RNNs e LSTMs, ele opera com um mecanismo de *self-attention*: cada token considera todos os outros simultaneamente, produzindo representações contextuais dinâmicas. A palavra "banco" agora recebe uma representação diferente dependendo do que está ao redor dela.
+**2017:** O **Transformer** — introduzido no artigo *Attention Is All You Need* (Vaswani et al., 2017) — redefiniu a arquitetura dominante. Em vez de processar o texto palavra por palavra, como faziam as RNNs e LSTMs, ele opera com um mecanismo de *self-attention*: cada token considera todos os outros simultaneamente, produzindo representações contextuais dinâmicas. A palavra "banco" agora recebe uma representação diferente dependendo do que está ao redor dela.
 
 Além disso, ao eliminar a recorrência, o Transformer permitiu que o treinamento fosse altamente paralelizável — diferentes partes do texto podem ser processadas ao mesmo tempo, em vez de sequencialmente. Foi essa característica que viabilizou escala sem precedentes: mais dados, mais parâmetros, mais poder computacional, tudo funcionando em conjunto.
 
@@ -130,7 +130,8 @@ Ainda assim, esses modelos passam por etapas de refinamento após o pré-treinam
 |---|---|---|---|
 | Regras / simbólico (1950–80) | Explícita, manual | Inexistente | Nenhuma |
 | BoW / TF-IDF (1990–2000) | Esparsa, por contagem | Inexistente | Nenhuma |
-| Classificadores (2000–12) | Esparsa ou embedding fixo | Local / inexistente | Limitada ao domínio |
+| Classificadores (2000–12) | Esparsa, por frequência | Local / inexistente | Limitada ao domínio |
+| RNNs / LSTMs (1997–2017) | Sequencial, estado oculto | Sequencial, curto prazo | Limitada, por tarefa |
 | Embeddings (2013–17) | Densa, por palavra | Fixo, sem sequência | Parcial (embedding reutilizável) |
 | Transformer (2017) | Densa, por sequência inteira | Global (atenção completa) | Alta, via pré-treinamento |
 | LLMs (2018–hoje) | Contextual, por token | Global + contexto longo | Ampla, via prompting |
@@ -215,7 +216,7 @@ Os números são minúsculos porque existem infinitas frases possíveis — a pr
 
 **Por que não calcular a probabilidade de uma frase diretamente?**
 
-Porque é computacionalmente inviável. Uma frase de 10 palavras sobre um vocabulário de 50.000 tokens geraria mais combinações possíveis do que átomos no universo observável. Precisamos de uma estratégia mais inteligente.
+Porque é computacionalmente inviável. Uma frase de 10 palavras sobre um vocabulário de 50.000 tokens geraria $$50.000^{10} \approx 10^{47}$$ combinações possíveis — um número tão grande que nenhum sistema poderia enumerá-las ou armazená-las diretamente. Precisamos de uma estratégia mais inteligente.
 
 **A regra da cadeia: dividir para conquistar**
 
@@ -246,45 +247,66 @@ Porque cada fator individual é muito mais fácil de estimar. Para calcular $P(\
 
 ### 3.2 O que o modelo aprende a fazer na prática
 
-Durante o treinamento, o LLM recebe fragmentos de texto e deve atribuir probabilidades aos possíveis próximos tokens. Para o contexto "O gato subiu no ___", uma distribuição razoável seria:
+Durante o treinamento, o LLM recebe fragmentos de texto e deve atribuir probabilidades aos possíveis próximos tokens. Para o contexto "O gato bebeu ___", uma distribuição razoável seria:
 
 | Token | Probabilidade |
 |---|---|
-| `telhado` | 0.31 |
-| `muro` | 0.22 |
-| `sofá` | 0.17 |
-| `carro` | 0.08 |
-| `avião` | 0.001 |
+| `leite` | 0.31 |
+| `água` | 0.22 |
+| `suco` | 0.17 |
+| `chá` | 0.08 |
+| `cimento` | 0.001 |
 | ... | ... |
 
-O modelo não "sabe" que gatos sobem em telhados da forma que um humano saberia. Ele aprende, por exposição a trilhões de exemplos, quais sequências de tokens são estatisticamente mais prováveis na linguagem humana. O conhecimento é implícito — codificado nos pesos — e não declarativo.
+O modelo não 'sabe' que gatos gostam de leite ou que 'cimento' é uma palavra real — ele simplesmente "aprendeu", por exposição a trilhões de exemplos, quais sequências de tokens são estatisticamente mais prováveis na linguagem humana. O conhecimento é implícito — codificado nos pesos — e não declarativo.
 
 ### 3.3 A geração de texto como amostragem
 
 Quando um LLM "gera" texto, ele executa um processo iterativo de **amostragem da distribuição de próximo token**:
 
 1. Dado o prompt (contexto inicial), calcula $P(w_i \mid \text{contexto})$.
-2. Amostra um token dessa distribuição.
+2. Amostra um token dessa distribuição, escolhendo um token com probabilidade proporcional à sua chance. Por exemplo, se "leite" tem 31% de chance, ele tem 31% de chance de ser escolhido como próximo token.
 3. Acrescenta o token ao contexto.
 4. Repete a partir do passo 1.
 
 Esse mecanismo explica diretamente comportamentos que você provavelmente já observou:
 
-- **Temperatura**: parâmetro que "achata" ou "aguça" a distribuição antes da amostragem. Temperatura alta → distribuição mais uniforme → o modelo considera tokens menos prováveis → texto mais criativo, mas potencialmente menos coerente. Temperatura baixa → distribuição concentrada no token mais provável → texto mais previsível e determinístico.
+- **Temperatura (Temperature)**: parâmetro que "achata" ou "aguça" a distribuição antes da amostragem. Na prática, o modelo divide as pontuações brutas de cada token pela temperatura antes de calcular as probabilidades — dividir por um valor menor que 1 amplifica as diferenças entre tokens, concentrando a distribuição no mais provável; dividir por um valor maior as suaviza, dando mais chance a tokens menos prováveis. Temperatura alta → distribuição mais uniforme → texto mais criativo, mas potencialmente menos coerente. Temperatura baixa → distribuição concentrada → texto mais previsível e determinístico.
 
-- **Alucinações**: o modelo não consulta uma base de fatos — ele estima a sequência mais provável dado o contexto. Se o padrão estatístico do treinamento associar um determinado contexto a uma afirmação factualmente incorreta, o modelo a gerará com alta confiança, pois ela é *localmente plausível* na distribuição aprendida.
+- **Alucinações (Hallucinations)**: o modelo não consulta uma base de fatos — ele estima a sequência mais provável dado o contexto. Se o padrão estatístico do treinamento associar um determinado contexto a uma afirmação factualmente incorreta, o modelo a gerará com alta confiança, pois ela é *localmente plausível* na distribuição aprendida.
 
-- **Sensibilidade ao prompt**: o prompt define o contexto condicionante $w_1, \ldots, w_{i-1}$. Quanto mais informativo o contexto, menor a incerteza da distribuição e mais direcionada tende a ser a geração.
+- **Sensibilidade ao prompt (Prompt Sensitivity)**: o prompt define o contexto condicionante $w_1, \ldots, w_{i-1}$. Quanto mais informativo o contexto, menor a incerteza da distribuição e mais direcionada tende a ser a geração.
 
 ### 3.4 O objetivo de treinamento: minimizar a surpresa
 
-Como o modelo aprende a fazer boas estimativas? Por meio da minimização de uma função de perda chamada **entropia cruzada** (*cross-entropy loss*), que mede o quão "surpreso" o modelo ficou diante dos tokens reais do corpus de treinamento:
+Como o modelo aprende a fazer boas estimativas? Por meio da minimização de uma função de perda chamada **entropia cruzada** (*cross-entropy loss*), que mede o quão "surpreso" o modelo ficou diante dos tokens reais do corpus de treinamento.
 
 $$\mathcal{L} = -\sum_{i} \log P(w_i \mid w_1, \ldots, w_{i-1})$$
 
-Intuitivamente: $\log P$ de uma probabilidade alta é um número pequeno em módulo; de uma probabilidade baixa, é um número grande. Logo, o modelo é **fortemente penalizado** quando atribui baixa probabilidade ao token que realmente aparece no texto. Minimizar $\mathcal{L}$ equivale a maximizar a log-verossimilhança dos dados de treinamento — fazer o modelo atribuir probabilidades cada vez maiores às sequências reais que ele observa.
+Para entender a fórmula, vale construir a intuição em partes.
 
-Ao repetir esse processo sobre trilhões de tokens, o modelo não memoriza sequências — ele internaliza estruturas: gramática, fatos sobre o mundo, estilos de escrita, relações semânticas, padrões de raciocínio. Tudo isso emerge como consequência de aprender a prever bem o próximo token.
+**O que é $\log P$?**
+
+$P$ é uma probabilidade — um número entre 0 e 1. O logaritmo de qualquer número nesse intervalo é sempre negativo. Quanto mais próxima de 1 a probabilidade, mais próximo de zero fica o logaritmo. Quanto mais próxima de 0, mais negativo e grande em módulo (valor absoluto) fica o logaritmo. Por exemplo:
+
+| O modelo atribuiu probabilidade... | $\log P$ é aproximadamente... |
+|---|---|
+| 0,9 (muito confiante, acertou) | −0,10 |
+| 0,5 (incerto) | −0,69 |
+| 0,1 (confiante na direção errada) | −2,30 |
+| 0,01 (completamente errado) | −4,60 |
+
+**O que o sinal negativo faz?**
+
+O $-$ na frente inverte o sinal, transformando todos esses valores negativos em positivos. Assim, quando o modelo erra — atribui baixa probabilidade ao token correto — a perda fica alta. Quando acerta — atribui alta probabilidade — a perda fica baixa, próxima de zero.
+
+**O que o $\sum$ faz?**
+
+O símbolo $\sum$ significa "some tudo". O modelo calcula essa penalidade para cada token do corpus de treinamento e soma tudo. O resultado é um número único que representa o erro total do modelo sobre todos os exemplos vistos.
+
+**Juntando tudo:**
+
+A fórmula diz, em linguagem direta: *para cada token real que apareceu no texto de treinamento, veja qual probabilidade o modelo atribuiu a ele. Se foi alta, a penalidade é pequena. Se foi baixa, a penalidade é grande. Some todas as penalidades.* Treinar o modelo é encontrar os pesos que minimizam essa soma — ou seja, fazer o modelo se surpreender cada vez menos com a linguagem humana real.
 
 ---
 
