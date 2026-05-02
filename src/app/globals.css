@@ -46,6 +46,7 @@
   /* -- Action Buttons -- */
   --color-action-bg: #4d127c;
   --color-action-hover-bg: #360b7c;
+  --color-action-text: #e0e3ec;
 }
 
 /* ─── Light theme ───────────────────────────────────────────────── */
@@ -87,6 +88,7 @@
   /* -- Action Buttons -- */
   --color-action-bg: #292931;
   --color-action-hover-bg: #1b1b22;
+  --color-action-text: #e0e3ec;
 
   /* Footer is always dark — no override needed */
 }
