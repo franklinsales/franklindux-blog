@@ -11,6 +11,8 @@ No artigo anterior, vimos *o que* são os LLMs e o que eles fazem. Agora vamos u
 
 **Deep learning** (aprendizado profundo) é uma subárea da inteligência artificial que usa redes neurais (explicação mais adiante) com múltiplas camadas para aprender padrões a partir de dados. O "profundo" (*deep*) no nome não é metáfora: refere-se literalmente à *profundidade* dessas redes — o número de camadas empilhadas.
 
+![Deep Learning e Redes Neurais](/posts/deep-learning-neural-networking.png)
+
 A ideia central é simples: em vez de programar regras manualmente ("se a frase contiver 'não', inverta o sentido"), você mostra ao sistema milhões de exemplos e deixa ele *descobrir* as regras sozinho. A cada previsão errada, o sistema mede o erro e ajusta seus parâmetros internos para acertar mais na próxima vez — como uma criança aprendendo a falar: você não explica a gramática, só fala com ela, e ela aprende por imitação e correção.
 
 Deep learning é a tecnologia por trás do reconhecimento de voz no seu celular, das recomendações do Netflix, dos carros autônomos — e dos LLMs. A diferença está no que entra como dado: imagens, áudio ou, no caso dos modelos de linguagem, texto.
