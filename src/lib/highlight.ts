@@ -46,6 +46,10 @@ export async function renderMarkdown(content: string): Promise<string> {
             return `<div class="mermaid" data-source="${escapeHtml(text)}">${escapeHtml(text)}</div>`;
           }
 
+          if (rawLang === "chartjs") {
+            return `<div class="chartjs-container"><canvas class="chartjs" data-source="${escapeHtml(text)}"></canvas></div>`;
+          }
+
           const language: BundledLanguage =
             rawLang && SUPPORTED_LANGS.includes(rawLang as BundledLanguage)
               ? (rawLang as BundledLanguage)

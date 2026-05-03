@@ -18,5 +18,13 @@ export const mockPosts: Post[] = [
     date: "2026-05-02",
     tags: ["LLMs", "Inteligência Artificial"],
     image: "/posts/01-llms.png",
+  },
+  {
+    slug: "part2-llm-transformer",
+    title: "LLMs: O que é um Transformer? — Parte 2",
+    summary:
+      "Na primeira parte desta série, vimos o que são LLMs e como eles funcionam por dentro. Agora, vamos dar um passo adiante e entender a arquitetura que tornou tudo isso possível: o Transformer. O Transformer é a espinha dorsal dos LLMs modernos, e sua estrutura inovadora é o que permite que essas máquinas aprendam a falar de maneira tão fluida e natural. Nesta segunda parte, vamos dissecar o Transformer, explicando seus componentes principais e como eles trabalham juntos para processar e gerar linguagem.",
+    date: "2026-05-16",
+    tags: ["LLMs", "Inteligência Artificial", "Transformer"],
   }
 ];

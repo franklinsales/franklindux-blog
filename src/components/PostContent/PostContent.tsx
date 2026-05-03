@@ -90,6 +90,27 @@ export default function PostContent({
     });
   }, [contentHtml, step]);
 
+  useEffect(() => {
+    import("chart.js/auto").then((mod) => {
+      const { Chart } = mod;
+      document.querySelectorAll<HTMLCanvasElement>("canvas.chartjs").forEach((canvas) => {
+        // Destroy existing instance if re-rendering
+        const existing = Chart.getChart(canvas);
+        if (existing) existing.destroy();
+
+        const source = canvas.getAttribute("data-source");
+        if (!source) return;
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const config = JSON.parse(source) as any;
+          new Chart(canvas, config);
+        } catch (e) {
+          console.error("chartjs: failed to parse config", e);
+        }
+      });
+    });
+  }, [contentHtml]);
+
   return (
     <>
       <div className={styles.controls} role="group" aria-label="Tamanho da fonte">
