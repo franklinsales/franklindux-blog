@@ -5,7 +5,7 @@ LLM é a sigla para *Large Language Model* — em português, **Modelo de Lingua
 O adjetivo *large* (grande) no nome não é apenas um detalhe de marketing, refere-se a duas dimensões principais do modelo:
 
 1. **Volume de dados de treinamento**: textos na escala de trilhões de palavras, extraídos de livros, artigos, páginas da web, código-fonte e muito mais. Essa diversidade e quantidade de dados permitem que o modelo aprenda uma representação rica e abrangente da linguagem humana, incluindo nuances, estilos, fatos e padrões de raciocínio.
-2. **Número de parâmetros**: os chamados *weights* (pesos) do modelo, que são valores numéricos que controlam a força de influência entre as unidades de texto e que surgem do próprio processo de treinamento. Pense neles como a**memória aprendida** do modelo — é neles que ficam codificadas as relações entre palavras, frases e conceitos. Modelos modernos operam na faixa de bilhões a trilhões de parâmetros, o que lhes confere uma capacidade impressionante de compreensão e geração de texto.
+2. **Número de parâmetros**: os chamados *weights* (pesos) do modelo, que são valores numéricos que controlam a força de influência entre as unidades de texto e que surgem do próprio processo de treinamento. Pense neles como a **memória aprendida** do modelo — é neles que ficam codificadas as relações entre palavras, frases e conceitos. Modelos modernos operam na faixa de bilhões a trilhões de parâmetros, o que lhes confere uma capacidade impressionante de compreensão e geração de texto.
 
 Na prática, o que isso significa? Significa que um LLM consegue responder perguntas, traduzir idiomas, resumir textos, gerar código e manter conversas coerentes — **sem ter sido explicitamente programado para nenhuma dessas tarefas**. Esse comportamento emerge do treinamento em larga escala: ao ser exposto a padrões complexos da linguagem, o modelo aprende a aplicá-los de forma flexível às mais variadas situações.
 
@@ -40,13 +40,13 @@ O problema é que regras não escalam. A língua real é ambígua, contextual, e
 
 O acúmulo desses fracassos culminou no **Relatório ALPAC (1966)**, uma avaliação crítica que concluiu que a tradução automática estava longe de ser viável. O resultado foi imediato: cortes significativos de financiamento e um redirecionamento da área para tarefas mais restritas e controláveis. O chamado **primeiro inverno da IA** teve início, e o campo de NLP ficou estagnado por quase uma década.
 
-#### Exemplo: Georgetown-IBM Project (1953)
+**Exemplo: Georgetown-IBM Project (1953)**
 
 ![Exemplo do fluxo lógico do projeto de tradução Georgetown-IBM](/posts/georgetown-ibm-nlp-english-russian-translate-project-franklindux.png)
 
 *Figura: Exemplo do fluxo lógico do projeto de tradução Georgetown-IBM. Fonte: Ornstein, Jacob. "Mechanical Translation: New Challenge to Communication". Science, vol. 122, issue 3173, pp. 745-748, 21 Oct 1955.*
 
-#### Exemplo: Chomsky, N. - Syntactic Structures (1957)
+### Exemplo: Chomsky, N. - Syntactic Structures (1957)
 *Fonte original:** Chomsky, N. (1957). *Syntactic Structures*. Mouton & Co.
  
 Noam Chomsky publicou *Syntactic Structures* em 1957, propondo que a linguagem humana poderia ser descrita por **gramáticas formais** — conjuntos de regras de reescrita que geram todas as frases gramaticalmente válidas de uma língua.
@@ -58,6 +58,8 @@ símbolo_não-terminal → sequência de símbolos
 ```
  
 **Exemplo de gramática para frases simples em português:**
+
+Na frase: "O gato bebeu leite", a estrutura sintática pode ser representada por regras como:
  
 ```
 S  → NP VP
@@ -93,6 +95,9 @@ E rejeita (não deriva) frases como:
 *O problema:* a regra `NP → Det N` não sabe nada sobre o mundo. Ela aceita igualmente "o gato bebeu leite" e "o leite bebeu gato" — ambas são gramaticalmente válidas pela gramática, mas apenas uma faz sentido semanticamente. Regras sintáticas não capturam significado.
 
 **Anos 1970–1980:** Aprofundaram a aposta na abordagem simbólica. Sistemas especialistas e redes semânticas tentavam representar o conhecimento do mundo de forma estruturada — o projeto SHRDLU, por exemplo, conseguia manipular objetos em ambientes virtuais usando linguagem natural. Funcionava, mas apenas dentro de domínios fechados e controlados. Fora deles, o sistema simplesmente não sabia o que fazer. Em paralelo, começavam a surgir os primeiros esforços de corpora anotados — coleções de textos marcados manualmente com informações linguísticas - incluindo os trabalhos iniciais que culminariam no Penn Treebank, publicado formalmente em 1992–1993. A limitação dos sistemas simbólicos, somada a expectativas infladas, levou a ciclos de redução de financiamento. O chamado **segundo inverno da IA** teve início no final dos anos 1980 e se estendeu até meados dos anos 1990.
+
+![SHRDLU - MIT](/posts/shrdlu-llms.png)
+*Figura: Exemplo da interface do SHRDLU, um sistema de NLP simbólico desenvolvido no MIT por Terry Winograd (1968 e 1970). O usuário pode digitar comandos em linguagem natural para manipular objetos em um ambiente virtual.*
 
 **Anos 1990:** O campo passou por uma transição para **métodos estatísticos baseados em dados**. Em vez de codificar regras explicitamente, modelos aprendem padrões a partir de grandes corpora. Técnicas como modelos de linguagem n-grama e Hidden Markov Models (HMMs) tornaram-se centrais em tarefas como tagging e reconhecimento de fala. Representações como Bag of Words (BoW) e TF-IDF permitem transformar texto em vetores numéricos. Esses métodos são escaláveis e robustos, mas limitados: ignoram semântica profunda e dependem fortemente de frequência e coocorrência. Ainda assim, muitos sistemas permaneceram híbridos, combinando estatística e regras.
 
