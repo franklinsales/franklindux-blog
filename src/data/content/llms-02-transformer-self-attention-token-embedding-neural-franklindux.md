@@ -45,7 +45,7 @@ graph TD
 
 Um neurônio artificial faz três coisas:
 
-1. **Recebe entradas** — números que representam alguma informação: a intensidade de um pixel numa imagem, a temperatura de um sensor, ou (como veremos mais adiante) características de um texto.
+1. **Recebe entradas** — números que representam alguma informação: a intensidade de um pixel numa imagem, a temperatura de um sensor, ou (como veremos mais adiante) a presença de uma palavra num texto. Cada entrada é um número real (veremos mais adiante como o texto vira números), e o neurônio pode ter dezenas, centenas ou milhares de entradas.
 2. **Pondera e soma** — multiplica cada entrada pelo seu **peso** (*weight*): um número que o modelo aprende durante o treinamento e que representa a importância daquela entrada. Depois soma tudo, adicionando um **viés** (*bias*): uma constante que desloca o resultado para cima ou para baixo, permitindo que o neurônio ajuste sua sensibilidade independentemente das entradas — como calibrar uma balança antes de pesar algo.
 3. **Aplica uma função de ativação** — passa a soma por uma função matemática que decide o que o neurônio vai "emitir" para a próxima camada, introduzindo a capacidade de capturar padrões complexos que não seguem uma linha reta.
 
