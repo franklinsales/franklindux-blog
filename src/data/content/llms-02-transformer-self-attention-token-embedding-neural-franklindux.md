@@ -29,9 +29,9 @@ Mas como exatamente uma rede neural aprende? Para entender isso, precisamos come
 
 ### A inspiração biológica
 
-O cérebro humano tem cerca de 86 bilhões de neurônios. Cada neurônio recebe sinais elétricos de outros neurônios, e se a soma desses sinais ultrapassar um certo limiar (*threshold*, ou limite), o neurônio "dispara" — gerando um potencial de ação, um pulso elétrico que percorre o axônio (a "saída" do neurônio) e libera neurotransmissores nos neurônios seguintes. É uma rede de decisões em cascata, e dali emerge tudo: memória, linguagem, raciocínio.
+O cérebro humano tem cerca de 86 bilhões de neurônios. Cada neurônio recebe sinais elétricos de outros neurônios, e se a soma desses sinais ultrapassar um certo limiar (*threshold*, ou limite), o neurônio "dispara" — gerando um **potencial de ação**, um pulso elétrico que percorre o axônio (a "saída" do neurônio) e libera neurotransmissores nos neurônios seguintes. É uma rede de decisões em cascata, e dali emerge tudo: memória, linguagem, raciocínio...
 
-Redes neurais artificiais são uma abstração matemática dessa ideia. Longe de simular biologia com fidelidade, elas capturam o *princípio*: unidades simples conectadas em camadas, onde cada conexão tem um peso que determina sua importância e uma função de ativação que decide se o sinal passa adiante ou não — até gerar uma saída.
+Redes neurais artificiais são uma abstração matemática dessa ideia. Longe de simular biologia com fidelidade, elas capturam o *princípio*: 1) unidades simples conectadas em camadas, 2) onde cada conexão tem um peso que determina sua importância e 3) uma função de ativação que decide se o sinal passa adiante ou não — até gerar uma saída.
 
 ```mermaid
 graph TD
