@@ -3,7 +3,7 @@
 
 ---
 
-No ![artigo anterior](https://franklindux.com/posts/llms-01-introducacao-parte-1-da-serie-de-maquina-inteligencia-artificial/), vimos *o que* são os LLMs, que eles fazem, uma breve história e um panorama geral de como eles funcionam por dentro.
+No [artigo anterior](https://franklindux.com/posts/llms-01-introducacao-parte-1-da-serie-de-maquina-inteligencia-artificial/), vimos *o que* são os LLMs, que eles fazem, uma breve história e um panorama geral de como eles funcionam por dentro.
 
 Neste artigo vamos voltar ao *como* eles funcionam por dentro, focando na arquitetura que tornou tudo isso possível: o **Transformer**. Mas antes de chegar no coração dos LLMs — a arquitetura Transformer —, precisamos entender o terreno onde ela cresceu: o **deep learning** e as **redes neurais artificiais**.
 
