@@ -124,7 +124,7 @@ Por isso:
 
 * Ative MFA imediatamente
 * Não use Root no dia a dia
-* Crie um usuário IAM administrativo
+* Crie um usuário IAM administrativo (veremos isso na próxima parte)
 
 **Root = chave mestra. Use apenas em emergências.**
 
