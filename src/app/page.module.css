@@ -32,3 +32,14 @@
   flex-direction: column;
   gap: 1.25rem;
 }
+
+@media (min-width: 1200px) {
+  .posts {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .posts > * {
+    flex: 0 0 calc((100% - 2 * 1.25rem) / 3);
+  }
+}
