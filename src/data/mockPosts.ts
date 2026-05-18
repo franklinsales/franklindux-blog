@@ -5,7 +5,7 @@ export const mockPosts: Post[] = [
     slug: "01-o-que-e-cloud-e-aws",
     title: "O que é Cloud e AWS? — Série sobre AWS - Parte 1",
     summary:
-      "Na primeira parte desta série, exploramos o que é cloud computing e como a AWS se tornou líder nesse mercado. Abordamos os conceitos básicos de IaaS, PaaS e SaaS, além de discutir a importância de regiões e Availability Zones, o uso do Root User e como criar uma conta AWS. Esta série é ideal para quem deseja entender os fundamentos da nuvem e como começar a utilizar a AWS de forma segura e eficiente.",
+      "Na primeira parte desta série, exploramos o que é cloud computing e como a AWS se tornou líder nesse mercado. Abordamos os conceitos básicos de IaaS, PaaS e SaaS, além de discutir a importância de regiões e Availability Zones, o uso do Root User e como criar uma conta AWS.",
     date: "2026-05-17 21:51:45",
     tags: ["Cloud", "AWS", "Infraestrutura"],
     image: "/posts/aws-intro-part-one.png",

@@ -6,11 +6,9 @@ Antes de aprender serviços como EC2, RDS ou IAM, é essencial entender a base d
 
 Cloud computing mudou a forma como empresas constroem software: em vez de comprar servidores físicos, configurar datacenters e investir pesado em infraestrutura própria, agora é possível provisionar recursos sob demanda e pagar apenas pelo uso.
 
-Nesta primeira semana, o objetivo é entender o que é cloud, como a AWS organiza sua infraestrutura, por que ela domina o mercado e quais cuidados de segurança são obrigatórios ao criar sua primeira conta.
+Nesta primeira parte, o objetivo é entender o que é cloud, como a AWS organiza sua infraestrutura, por que ela domina o mercado e quais cuidados de segurança são obrigatórios ao criar sua primeira conta.
 
 ---
-
-## Resumo da Semana 1
 
 ### O que é Cloud Computing
 
@@ -146,7 +144,7 @@ Por isso:
 
 ### Como Criar um Billing Alarm para monitorar custos e evitar surpresas na fatura:
 
-![Meme sobre faturas AWS](/posts/aws-meme-bill.png)
+![Meme sobre faturas AWS](/posts/aws-meme-bill.jpeg)
 
 Um dos maiores medos ao usar cloud é receber uma fatura exorbitante no final do mês. Muitos profissionais durante o processo de aprendizado acabam esquecendo de desligar recursos ou criam algo que consome mais do que o esperado, e isso pode gerar custos altos.
 
