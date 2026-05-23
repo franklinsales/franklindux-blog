@@ -2,6 +2,15 @@ import type { Post } from "@/types/post";
 
 export const mockPosts: Post[] = [
   {
+    slug: "02-linguagem-basica-termos-aws",
+    title: "Linguagem Básica da AWS — Série sobre AWS - Parte 2",
+    summary:
+      "Na segunda parte desta série, exploramos a linguagem básica da AWS, incluindo recursos, ARNs, tags, e outros conceitos fundamentais que aparecem em todos os serviços e documentações da AWS.",
+    date: "2026-05-23 16:39:53",
+    tags: ["Cloud", "AWS", "Infraestrutura"],
+    image: "/posts/Resource-ARN-Tags.png",
+  },
+  {
     slug: "01-o-que-e-cloud-e-aws",
     title: "O que é Cloud e AWS? — Série sobre AWS - Parte 1",
     summary:
