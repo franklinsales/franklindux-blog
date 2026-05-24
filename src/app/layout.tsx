@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Roboto_Mono, Geist_Mono } from "next/font/google";
 import CookieConsent from "@/components/CookieConsent/CookieConsent";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const primary = Roboto_Mono({
+  variable: "--font-primary",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${inter.variable} ${geistMono.variable}`}
+      className={`${primary.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <head>
