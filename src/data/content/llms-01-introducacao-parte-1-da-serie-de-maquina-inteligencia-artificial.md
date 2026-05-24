@@ -180,6 +180,8 @@ Formalmente, um **modelo de linguagem** é uma **distribuição de probabilidade
 
 $$P(w_1, w_2, \ldots, w_n)$$
 
+No caso aqui, $w_i$ representa o token na posição $i$ da sequência. A função $P$ é a distribuição de probabilidade que o modelo aprendeu a partir dos dados de treinamento.
+
 Quanto maior essa probabilidade, mais "natural" ou "plausível" é a sequência segundo o que o modelo aprendeu da linguagem humana.
 
 Por meio da **regra da cadeia de probabilidades**, essa distribuição conjunta — que seria impossível de calcular diretamente — é fatorada em etapas menores:
