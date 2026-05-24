@@ -190,6 +190,14 @@ $$P(w_1, w_2, \ldots, w_n) = \prod_{i=1}^{n} P(w_i \mid w_1, w_2, \ldots, w_{i-1
 
 Cada fator $P(w_i \mid w_1, \ldots, w_{i-1})$ é a probabilidade do próximo token $w_i$, dado todo o contexto anterior. **Aprender um modelo de linguagem é, essencialmente, aprender a estimar esses fatores com precisão.**
 
+#### Para entender sem ser matemático
+
+Imagine que você está jogando uma partida de completar frases. Alguém escreve *"O gato subiu no..."* e te pede para adivinhar a próxima palavra. Você provavelmente diria *"telhado"*, *"sofá"* ou *"muro"* — e não *"helicóptero"* ou *"democracia"*. Por quê? Porque com base em tudo que você já leu e ouviu na vida, algumas continuações fazem sentido e outras não.
+
+Um modelo de linguagem faz exatamente isso, mas com matemática. Ele aprendeu, a partir de enormes quantidades de texto, quais palavras (ou *tokens*) tendem a aparecer depois de quais outras. A cada passo, ele olha para tudo que foi escrito até agora e calcula: *"qual é a próxima peça mais provável?"*
+
+A fórmula com o produtório $\prod$ é só a forma rigorosa de dizer isso: a probabilidade de uma frase inteira é o resultado de multiplicar, uma a uma, as probabilidades de cada palavra — sempre levando em conta todas as anteriores. Não é magia; é uma aposta bem informada, repetida token por token.
+
 #### 3.1.1 Entendendo a fórmula passo a passo
 
 A notação matemática pode parecer intimidadora, mas o raciocínio por trás dela é direto. Vamos desmontá-la com um exemplo concreto.
@@ -206,7 +214,19 @@ Cada token recebe um índice numérico em um vocabulário $V$, cujo tamanho típ
 
 **O que é "distribuição de probabilidade sobre sequências"?**
 
-Pense em um dado de seis faces: cada face tem probabilidade $\frac{1}{6}$ de sair. A distribuição descreve todas as possibilidades e suas chances. Um modelo de linguagem faz o mesmo para frases — atribui uma probabilidade a cada sequência possível:
+Pense em um dado de seis faces: cada face tem probabilidade $\frac{1}{6}$ de sair. A distribuição descreve todas as possibilidades e suas chances. Exemplo: para um dado justo, a distribuição é:
+| Face | Probabilidade |
+|---|---|
+| 1 | 0.1667 |
+| 2 | 0.1667 |
+| 3 | 0.1667 |
+| 4 | 0.1667 |
+| 5 | 0.1667 |
+| 6 | 0.1667 |
+
+> Obs.: a soma de todas as probabilidades é 1, porque uma das faces precisa sair. Todas as faces são igualmente prováveis, então cada uma tem a mesma chance.
+
+Um modelo de linguagem faz o mesmo para frases — atribui uma probabilidade a cada sequência possível:
 
 | Frase | Probabilidade |
 |---|---|
