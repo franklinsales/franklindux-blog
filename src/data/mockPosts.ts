@@ -6,7 +6,7 @@ export const mockPosts: Post[] = [
     title: "O que é IAM  e por que ele existe? — Série sobre AWS - Parte 3",
     summary:
       "Se existe um único serviço que você precisa entender profundamente antes de qualquer outro na AWS, esse é o IAM. Não o EC2, não o RDS, não o S3 e nem o Elastic Beanstalk. Comece pelo IAM.",
-    date: "2026-05-07 03:50:53",
+    date: "2026-06-07 03:50:53",
     tags: ["Cloud", "AWS", "Infraestrutura"],
     image: "/posts/aws-iam-main-imagem-franklindux.png",
   },
