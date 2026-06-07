@@ -76,7 +76,7 @@ Um usuário IAM criado sem nenhuma política não pode fazer absolutamente nada.
 **Quando NÃO criar um IAM User:**
 
 - Para serviços AWS que precisam acessar outros serviços AWS — use Roles (detalhado abaixo).
-- Para acesso temporário — use Roles com STS (AWS Security Token Service), abordado na Semana 5.
+- Para acesso temporário — use Roles com STS (AWS Security Token Service), abordado no futuro.
 - Para acesso humano em ambientes com múltiplas pessoas ou múltiplas contas AWS — veja a nota abaixo.
 
 **Limitações e boas práticas:**
@@ -218,8 +218,6 @@ Antes de falar em inline vs. managed, é importante entender os dois tipos funda
   ]
 }
 ```
- 
-Nesta semana o foco é nas identity-based policies. Resource-based policies serão aprofundadas na Semana 4.
  
 ### Managed Policies
  
@@ -623,7 +621,7 @@ Antes de escrever uma policy, responda:
 - Em quais recursos específicos? (todos os buckets? um bucket específico? todas as instâncias? apenas as de staging?)
 #### 2. Use o IAM Access Analyzer
  
-O **IAM Access Analyzer** (abordado com mais profundidade na Semana 4) analisa logs do CloudTrail e sugere políticas baseadas no que uma identidade **realmente usou** em um período. Se uma role tem `ec2:*` mas o CloudTrail mostra que ela só executou `ec2:DescribeInstances` nos últimos 90 dias, o Access Analyzer sugere uma política mínima com apenas essa ação.
+O **IAM Access Analyzer** (abordado com mais profundidade no futuro) analisa logs do CloudTrail e sugere políticas baseadas no que uma identidade **realmente usou** em um período. Se uma role tem `ec2:*` mas o CloudTrail mostra que ela só executou `ec2:DescribeInstances` nos últimos 90 dias, o Access Analyzer sugere uma política mínima com apenas essa ação.
  
 #### 3. Use o IAM Policy Simulator
  
@@ -829,7 +827,7 @@ Para exigir MFA também em chamadas programáticas, você pode:
  
 1. Usar a policy `NegaTudoSemMFA` com a condição `aws:MultiFactorAuthPresent: false` — isso faz com que a CLI também precise de credenciais com MFA ativo.
 2. Usar `aws sts get-session-token --serial-number <arn-mfa> --token-code <codigo>` para obter credenciais temporárias com MFA, e usar essas credenciais na CLI.
-Este fluxo avançado com STS será detalhado na Semana 5.
+Este fluxo avançado com STS será detalhado no futuro.
  
 ---
 
