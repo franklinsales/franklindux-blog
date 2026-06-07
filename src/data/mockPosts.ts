@@ -2,7 +2,7 @@ import type { Post } from "@/types/post";
 
 export const mockPosts: Post[] = [
   {
-    slug: "03-aws-iam-overview-visao-geral` ",
+    slug: "03-aws-iam-overview-visao-geral",
     title: "O que é IAM  e por que ele existe? — Série sobre AWS - Parte 3",
     summary:
       "Se existe um único serviço que você precisa entender profundamente antes de qualquer outro na AWS, esse é o IAM. Não o EC2, não o RDS, não o S3 e nem o Elastic Beanstalk. Comece pelo IAM.",
