@@ -8,13 +8,15 @@ Administradores de infraestrutura que entendem IAM superficialmente cometem erro
 
 ## 1. O que é IAM e Por que ele existe?
 
+<div style="text-align: center;display: flex;justify-content: center;"><img src="/posts/aws-iam-logo-franklindux.png" alt="Logo do IAM" style="width: 300px;" /></div>
+
 ### O problema que o IAM resolve
 Imagine que você acabou de criar sua conta AWS. Existe um único usuário com acesso total:
 O Root User, com poder absoluto sobre tudo. Agora você precisa:
 - Dar acesso a um colega desenvolvedor para criar e gerenciar instâncias EC2.
-- Dar aceso a uma aplicação para ler objetos de um bucket S3 específico.
+- Dar acesso a uma aplicação para ler objetos de um bucket S3 específico.
 - Dar acesso a um colega de operações para monitorar métricas no CloudWatch, mas sem poder modificar nada.
-Dar acesso a um servicê de CI/CD para fazer deploy no Elastic Benstalk.
+- Dar acesso a um serviço de CI/CD para fazer deploy no Elastic Beanstalk.
 
 Como você faze isso sem dar a senha do Root User para o todo mundo? E como garante que o desenvolvedor não acesse acidentalmente (ou malicionamente) o banco de dados e produção? E que a aplicação não possa deletar instâncias?
 
