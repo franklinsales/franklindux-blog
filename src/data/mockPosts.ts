@@ -2,6 +2,15 @@ import type { Post } from "@/types/post";
 
 export const mockPosts: Post[] = [
   {
+    slug: "04-aws-vpc-essencial-basico",
+    title: "AWS VPC Essencial Básico — Série sobre AWS - Parte 4",
+    summary:
+      "Nesta parte da série, exploramos os conceitos essenciais de VPC (Virtual Private Cloud) na AWS, incluindo subnets, route tables, e security groups. Sem entender VPC, é impossível avançar para outros serviços da AWS, pois a maioria deles depende de uma VPC para funcionar. Este post é fundamental para quem deseja dominar a infraestrutura na nuvem da AWS.",
+    date: "2026-06-07 03:50:53",
+    tags: ["Cloud", "AWS", "Infraestrutura"],
+    image: "/posts/aws-vpc-main-imagem-franklindux.png",
+  },
+  {
     slug: "03-aws-iam-overview-visao-geral",
     title: "O que é IAM  e por que ele existe? — Série sobre AWS - Parte 3",
     summary:
