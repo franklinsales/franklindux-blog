@@ -269,36 +269,107 @@ O erro calculado na saída é propagado *de volta* pela rede, da direita para a 
 
 Com os gradientes em mãos, o algoritmo de **gradiente descendente** ajusta cada peso na direção que *reduz* o erro. A intuição é geométrica: imagine a função de perda como uma paisagem montanhosa, e o objetivo é encontrar o vale mais fundo (o menor erro possível). O gradiente aponta para a subida mais íngreme — então você dá um passo na direção oposta, descendo a encosta.
 
+```chartjs
+{
+  "type": "line",
+  "data": {
+    "datasets": [
+      {
+        "label": "Função de perda L(w)",
+        "data": [
+          {"x": 0,   "y": 13},
+          {"x": 1,   "y": 8.5},
+          {"x": 2,   "y": 5},
+          {"x": 3,   "y": 2.5},
+          {"x": 4,   "y": 1},
+          {"x": 5,   "y": 0.5},
+          {"x": 6,   "y": 1},
+          {"x": 7,   "y": 2.5},
+          {"x": 8,   "y": 5},
+          {"x": 9,   "y": 8.5},
+          {"x": 10,  "y": 13}
+        ],
+        "borderColor": "#4f8ef7",
+        "backgroundColor": "transparent",
+        "pointRadius": 0,
+        "tension": 0.4,
+        "borderWidth": 3
+      },
+      {
+        "label": "Ponto atual (erro alto)",
+        "data": [{"x": 1.5, "y": 6.625}],
+        "type": "scatter",
+        "backgroundColor": "#e05252",
+        "pointRadius": 10,
+        "pointHoverRadius": 12
+      },
+      {
+        "label": "Passos do gradiente descendente",
+        "data": [
+          {"x": 1.5, "y": 6.625},
+          {"x": 2.5, "y": 3.625},
+          {"x": 3.5, "y": 1.625},
+          {"x": 4.5, "y": 0.625}
+        ],
+        "type": "line",
+        "borderColor": "#F5A623",
+        "backgroundColor": "#F5A623",
+        "pointRadius": 6,
+        "tension": 0,
+        "borderWidth": 2,
+        "borderDash": [5, 5]
+      },
+      {
+        "label": "Mínimo (menor erro)",
+        "data": [{"x": 5, "y": 0.5}],
+        "type": "scatter",
+        "backgroundColor": "#50C878",
+        "pointRadius": 10,
+        "pointHoverRadius": 12
+      }
+    ]
+  },
+  "options": {
+    "plugins": {
+      "title": {
+        "display": true,
+        "text": "Gradiente descendente — descendo a curva de perda até o mínimo"
+      },
+      "legend": {"display": true}
+    },
+    "scales": {
+      "x": {
+        "type": "linear",
+        "title": {"display": true, "text": "Peso (w)"},
+        "min": 0,
+        "max": 10
+      },
+      "y": {
+        "title": {"display": true, "text": "Perda (Loss)"},
+        "min": 0,
+        "max": 14
+      }
+    }
+  }
+}
 ```
-Visualização simplificada:
 
-  Perda
-    │
-  ██│
-  ██│    ← ponto atual (erro alto)
-  ██│ ↘
-  ██│   ↘
-  ██│     ↘ ← direção do gradiente descendente
-  ██│       ↘
-  ──┼──────────────────→ Peso
-              ↑
-           mínimo (menor erro)
-```
+O tamanho de cada passo é controlado pelo **learning rate** $\eta$ (taxa de aprendizado):
 
-O tamanho de cada passo é controlado pelo **learning rate** (taxa de aprendizado):
+$$w_{\text{novo}} = w_{\text{atual}} - \eta \cdot \nabla \mathcal{L}(w)$$
 
-```
-novo_peso = peso_atual − (learning_rate × gradiente)
-```
+Cada símbolo tem um papel preciso: $w$ representa o peso que está sendo ajustado; $\eta$ (eta) é o *learning rate* — um número pequeno, como $0{,}01$ ou $0{,}001$, que controla o tamanho do passo dado a cada atualização; $\mathcal{L}$ é a função de perda (*loss*), que mede o quão errada está a previsão atual; e $\nabla \mathcal{L}(w)$ — lê-se "nabla L de w" — é o gradiente, a derivada parcial da perda em relação ao peso $w$, que indica a direção e a inclinação da encosta naquele ponto. O sinal de subtração é o que faz a descida acontecer: subtrair o gradiente move o peso na direção oposta à subida, ou seja, rumo ao mínimo.
 
 Exemplo numérico:
 ```
-peso_atual   = 0.8
-gradiente    = 0.5   (o peso está contribuindo para o erro nessa magnitude)
-learning_rate = 0.1  (passos pequenos para não "pular" o vale)
+peso_atual    = 1.5
+gradiente     = -0.5  (negativo: peso abaixo do valor ótimo — à esquerda do mínimo)
+learning_rate = 0.1   (passos pequenos para não "pular" o vale)
 
-novo_peso = 0.8 − (0.1 × 0.5) = 0.8 − 0.05 = 0.75
+novo_peso = 1.5 − (0.1 × (−0.5)) = 1.5 + 0.05 = 1.55
 ```
+
+No gráfico acima, esse cenário corresponde ao **ponto vermelho** em $w = 1{,}5$ — à esquerda do mínimo (ponto verde, em w = 5). Nessa posição, a curva de perda ainda está descendo da esquerda para a direita, portanto o gradiente é **negativo**: a encosta inclina para baixo na direção do mínimo. Ao aplicar a fórmula, subtraímos um número negativo — o que é matematicamente equivalente a somar — e o peso aumenta de $1{,}5$ para $1{,}55$, dando um pequeno passo em direção ao mínimo. Cada ponto laranja no gráfico representa exatamente essa operação repetida: a cada iteração, o peso avança um pouco mais para a direita, até se aproximar do vale onde a perda é mínima.
 
 O peso foi ajustado levemente na direção que reduz o erro. Repita isso com bilhões de exemplos, para cada um dos milhões de pesos da rede, e ela aprende. É brutalidade computacional a serviço de matemática elegante — e é exatamente essa maquinaria que está no coração dos LLMs.
 
@@ -573,9 +644,9 @@ Compatibilidade:
 
 Em notação matemática:
 
-```
-Attention(Q, K, V) = softmax(QKᵀ / √d_k) × V
-```
+$$
+\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right) V
+$$
 
 - `QKᵀ` — produto entre Queries e Keys: mede a compatibilidade entre cada par de tokens
 - `√d_k` — divisor que estabiliza os valores antes do softmax, evitando que números muito grandes tornem os gradientes instáveis
@@ -642,10 +713,10 @@ Tokens (ilustrativo):
   " a"             → [  257]
   " IA"            → [ 9143]
 
-Total: 7 tokens para 6 palavras
+Total: 7 tokens para 5 palavras
 ```
 
-Por isso, quando você usa um modelo de linguagem, o número de tokens processados é diferente do número de palavras. Em inglês, a proporção é aproximadamente 1 palavra ≈ 1,3–1,5 tokens. Em português — e na maioria das línguas não-inglesas — a proporção é maior, frequentemente 2–3 tokens por palavra, porque o vocabulário do BPE é treinado majoritariamente em inglês.
+Por isso, quando você usa um modelo de linguagem, o número de tokens processados é diferente do número de palavras. Em inglês, a proporção é aproximadamente 1 palavra ≈ 1,3 – 1,5 tokens. Em português — e na maioria das línguas não-inglesas — a proporção é maior, frequentemente 2 – 3 tokens por palavra, porque o vocabulário do BPE é treinado majoritariamente em inglês.
 
 ### Embeddings: transformando tokens em significado
 
@@ -653,7 +724,11 @@ Um token é só um número de índice — `1423` não diz nada sobre o que "gato
 
 É aí que entram os **embeddings**.
 
-Um embedding é um **vetor de números reais** com centenas ou milhares de dimensões. Cada token é mapeado para um desses vetores — e durante o treinamento, o modelo aprende a posicionar tokens semanticamente similares em regiões próximas desse espaço multidimensional.
+Um embedding é um **vetor de números reais** com centenas ou milhares de **dimensões**. Cada token é mapeado para um desses vetores — e durante o treinamento, o modelo aprende a posicionar tokens semanticamente similares em regiões próximas desse espaço multidimensional.
+
+**O que são essas dimensões?** Não são palavras, não são idiomas, não são valores escolhidos a mão — são **eixos numéricos abstratos** que o modelo descobriu sozinho durante o treinamento. Cada dimensão é simplesmente um número real que, em conjunto com todos os outros, posiciona o token num espaço de alta dimensão. O modelo não sabe — e não precisa saber — que a dimensão 42 captura "animais" ou que a dimensão 317 captura "verbos de movimento": ele apenas ajustou esses números, aos bilhões de iterações, de forma que tokens que aparecem em contextos parecidos acabassem próximos uns dos outros. Os rótulos "animal" e "realeza" que usamos no exemplo abaixo são uma simplificação didática — na prática, as dimensões são opacas e não têm nome.
+
+O tamanho do vetor — 768, 1024, 4096 dimensões — é um **hiperparâmetro fixo da arquitetura**, definido antes do treinamento. Ele não depende do idioma nem do vocabulário: um modelo multilíngue representa inglês, português e japonês no mesmo espaço de dimensão fixa. O que varia entre idiomas é *onde* cada token cai nesse espaço, não o tamanho do espaço em si.
 
 Aqui simplificamos para apenas duas dimensões, com rótulos intuitivos: *animal* (o quanto a palavra se relaciona com seres vivos) e *realeza* (o quanto se relaciona com poder e nobreza):
 
