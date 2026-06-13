@@ -328,7 +328,7 @@
 
 @media screen and (min-width: 2100px) {
   .container {
-    width: 35%;
+    width: 37%;
   }
   .content :global(p) {
     font-size: var(--post-p-size,  1.22rem);
