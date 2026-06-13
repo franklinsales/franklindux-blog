@@ -68,47 +68,74 @@ export default function PostContent({
   const liSize = (BASE_LI + step * STEP).toFixed(2);
 
   useEffect(() => {
-    import("mermaid").then((mod) => {
-      const mermaid = mod.default;
-      // Restore original source on already-rendered diagrams so mermaid can re-render them
-      document.querySelectorAll<HTMLElement>(".mermaid[data-processed]").forEach((el) => {
-        const source = el.getAttribute("data-source");
-        if (source) {
+    let cancelled = false;
+
+    const runMermaid = async () => {
+      try {
+        const mod = await import("mermaid");
+        if (cancelled) return;
+
+        const mermaid = mod.default;
+        const nodes = Array.from(document.querySelectorAll<HTMLElement>(".mermaid"));
+        if (nodes.length === 0) return;
+
+        // Restore original source so mermaid can safely re-render diagrams.
+        nodes.forEach((el) => {
+          const source = el.getAttribute("data-source");
+          if (!source || !el.isConnected) return;
           el.removeAttribute("data-processed");
-          el.innerHTML = source;
-        }
-      });
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: "dark",
-        flowchart: { useMaxWidth: true },
-        themeVariables: {
-          fontSize: "28px",
-        },
-      });
-      mermaid.run({ querySelector: ".mermaid" });
-    });
+          el.textContent = source;
+        });
+
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: "dark",
+          flowchart: { useMaxWidth: true },
+          themeVariables: {
+            fontSize: "28px",
+          },
+        });
+
+        await mermaid.run({ nodes, suppressErrors: true });
+      } catch (error) {
+        console.error("mermaid: failed to render diagrams", error);
+      }
+    };
+
+    runMermaid();
+
+    return () => {
+      cancelled = true;
+    };
   }, [contentHtml, step]);
 
   useEffect(() => {
-    import("chart.js/auto").then((mod) => {
-      const { Chart } = mod;
-      document.querySelectorAll<HTMLCanvasElement>("canvas.chartjs").forEach((canvas) => {
-        // Destroy existing instance if re-rendering
-        const existing = Chart.getChart(canvas);
-        if (existing) existing.destroy();
+    const runCharts = async () => {
+      try {
+        const mod = await import("chart.js/auto");
+        const { Chart } = mod;
 
-        const source = canvas.getAttribute("data-source");
-        if (!source) return;
-        try {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const config = JSON.parse(source) as any;
-          new Chart(canvas, config);
-        } catch (e) {
-          console.error("chartjs: failed to parse config", e);
-        }
-      });
-    });
+        document.querySelectorAll<HTMLCanvasElement>("canvas.chartjs").forEach((canvas) => {
+          // Destroy existing instance if re-rendering
+          const existing = Chart.getChart(canvas);
+          if (existing) existing.destroy();
+
+          const source = canvas.getAttribute("data-source");
+          if (!source) return;
+          try {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const config = JSON.parse(source) as any;
+            new Chart(canvas, config);
+          } catch (e) {
+            console.error("chartjs: failed to parse config", e);
+          }
+        });
+      } catch (error) {
+        console.error("chartjs: failed to initialize", error);
+      }
+    };
+
+    runCharts();
   }, [contentHtml]);
 
   return (
