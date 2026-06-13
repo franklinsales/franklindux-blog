@@ -32,7 +32,7 @@ export const mockPosts: Post[] = [
     slug: "llms-02-transformer-self-attention-token-embedding-neural-franklindux",
     title: "LLMs: O que é um Transformer? — Parte 2",
     summary:
-      "Na primeira parte desta série, exploramos o que são LLMs e como eles funcionam internamente. Agora, é hora de avançar para a arquitetura que tornou esses modelos possíveis: o Transformer. Responsável por revolucionar o processamento de linguagem natural, o Transformer é a base dos LLMs modernos. Sua estrutura inovadora permite que modelos compreendam contexto, identifiquem relações entre palavras e gerem texto de forma fluida e coerente.Nesta segunda parte, vamos dissecar essa arquitetura, explorando seus principais componentes e entendendo como eles trabalham em conjunto para processar, interpretar e gerar linguagem.",
+      "Na primeira parte desta série, exploramos o que são LLMs e como eles funcionam internamente. Agora, é hora de avançar para a arquitetura que tornou esses modelos possíveis: o Transformer. Responsável por revolucionar o processamento de linguagem natural, o Transformer é a base dos LLMs modernos.",
     date: "2026-05-04 07:51:45",
     tags: ["LLMs", "Inteligência Artificial", "Transformer"],
     image: "/posts/transformer-llm-franklindux.png",

@@ -49,13 +49,11 @@ Um neurônio artificial faz três coisas:
 2. **Pondera e soma** — multiplica cada entrada pelo seu **peso** (*weight*): um número que o modelo aprende durante o treinamento e que representa a importância daquela entrada. Depois soma tudo, adicionando um **viés** (*bias*): uma constante que desloca o resultado para cima ou para baixo, permitindo que o neurônio ajuste sua sensibilidade independentemente das entradas — como calibrar uma balança antes de pesar algo.
 3. **Aplica uma função de ativação** — passa a soma por uma função matemática que decide o que o neurônio vai "emitir" para a próxima camada, introduzindo a capacidade de capturar padrões complexos que não seguem uma linha reta.
 
-Em forma de equação, para um neurônio com entradas `x₁, x₂, x₃`:
+Em forma de equação, para um neurônio com entradas $x_1, x_2, x_3$:
 
-```
-saída = f(w₁·x₁ + w₂·x₂ + w₃·x₃ + b)
-```
+$$\text{saída} = f(w_1 \cdot x_1 + w_2 \cdot x_2 + w_3 \cdot x_3 + b)$$
 
-Onde `w₁, w₂, w₃` são os pesos, `b` é o viés, `x₁, x₂, x₃` são as entradas e `f` é a função de ativação.
+Onde $w_1, w_2, w_3$ são os pesos, $b$ é o viés, $x_1, x_2, x_3$ são as entradas e $f$ é a função de ativação.
 
 **Exemplo concreto:** imagine um neurônio simples tentando estimar se um e-mail é spam com base em três características: quantidade de links, presença de palavras suspeitas e tamanho da mensagem — cada uma representada por um número entre 0 e 1.
 
