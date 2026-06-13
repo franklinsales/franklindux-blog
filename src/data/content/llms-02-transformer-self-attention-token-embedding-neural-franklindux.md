@@ -849,30 +849,30 @@ Cada índice é substituído pelo seu vetor de embedding. Os embeddings posicion
 Os vetores passam por dezenas de camadas empilhadas. Em cada camada:
 
 ```
-      ┌─────────────────────────────┐
+  Entrada ─────────────────────────►┐
       │                             │
-  Entrada                           │  (conexão residual)
+      ▼                             │  (conexão residual 1:
+  Multi-Head Self-Attention         │   Entrada salta o bloco
+      │                             │   e é somada à sua saída)
+      ▼                             │
+  Add & Layer Norm ◄────────────────┘
+      │
+      ├────────────────────────────►┐
       │                             │
+      ▼                             │  (conexão residual 2:
+  Feed-Forward Network              │   saída anterior salta o bloco
+      │                             │   e é somada à sua saída)
       ▼                             │
-  Multi-Head Self-Attention ────────┘
-      │
-      ▼
-  Add & Layer Norm
-      │                             │  (conexão residual)
-      ▼                             │
-  Feed-Forward Network ─────────────┘
-      │
-      ▼
-  Add & Layer Norm
+  Add & Layer Norm ◄────────────────┘
       │
       ▼
   Saída (vetores mais ricos)
 ```
 
 1. **Multi-Head Self-Attention:** cada token atualiza sua representação olhando para todos os outros tokens e pesando sua influência.
-2. **Add & Norm:** a entrada da camada é somada à saída da atenção (conexão residual) e normalizada.
+2. **Add & Norm (1ª conexão residual):** o vetor original que entrou na camada é somado diretamente à saída da atenção — antes de qualquer normalização. Isso garante que, mesmo que a atenção introduza uma transformação drástica, a informação original não se perca. Em termos concretos: se o vetor de entrada era `[1.0, 0.5, ...]` e a atenção produziu `[0.2, 0.3, ...]`, o resultado após o Add é `[1.2, 0.8, ...]` — o modelo acumulou, não substituiu. O Layer Norm então reescala esse vetor para uma faixa estável.
 3. **Feed-Forward Network:** uma rede neural simples refina a representação de cada token independentemente.
-4. **Add & Norm:** novamente, conexão residual e normalização.
+4. **Add & Norm (2ª conexão residual):** o mesmo princípio se repete: o vetor que entrou na Feed-Forward é somado à sua saída antes da normalização. Cada camada, portanto, só precisa aprender o *delta* — a correção em cima do que já existia — em vez de reconstruir a representação do zero. Isso é o que permite empilhar dezenas de camadas sem que os gradientes desapareçam durante o treinamento.
 
 A cada camada, os vetores ficam mais ricos e contextualizados. Camadas iniciais tendem a capturar padrões sintáticos simples; camadas mais profundas capturam relações semânticas abstratas.
 
